@@ -35,20 +35,25 @@ export class ContactoComponent {
   constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
 
     confirm() {
-        this.confirmationService.confirm({
-            header: 'Confirmation',
-            message: 'Please confirm to proceed moving forward.',
+        if (this.nombreForm != "" && this.correoForm != "" && this.msgForm != "") {
+          this.confirmationService.confirm({
+            header: 'Confirmación',
+            message: '¿Estás seguro de que deseas enviar esta información?',
             acceptIcon: 'pi pi-check mr-2',
             rejectIcon: 'pi pi-times mr-2',
             rejectButtonStyleClass: 'p-button-sm',
             acceptButtonStyleClass: 'p-button-outlined p-button-sm',
             accept: () => {
-                this.messageService.add({ severity: 'success', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-                this.correoForm = this.nombreForm = this.msgForm = "";
+              this.messageService.add({ severity: 'info', summary: '¡Formulario enviado con éxito!', detail: 'Gracias por enviar su formulario. Pronto recibirá una respuesta por nuestra parte.', life: 3000 });
+              this.correoForm = this.nombreForm = this.msgForm = "";
             },
             reject: () => {
-                this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+              this.messageService.add({ severity: 'error', summary: 'No se enviará la información.', detail: 'Para enviar el formulario, por favor presione el botón "Yes"', life: 3000 });
             }
-        });
+          });
+        }else {
+          this.messageService.add({ severity: 'warn', summary: 'Por favor, complete todos los campos del formulario antes de enviar.', detail: 'Todos los campos son obligatorios para poder procesar su solicitud correctamente.', life: 3000 });
+        }
     }
 }
+ 

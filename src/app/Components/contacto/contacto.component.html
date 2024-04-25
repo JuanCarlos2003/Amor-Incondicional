@@ -1,5 +1,4 @@
 <div class="contenedor">
-    <!-- <img src="../../../assets/media/fondo-1.jpeg" alt=""> -->
     <div class="leyenda">
         <h3>Encuentra tu Compañero Peludo</h3>
         <p class="all-p">¡Contáctanos y adopta tu amigo fiel! Conoce a nuestros encantadores animales en busca de un hogar lleno de amor. ¡Haz la diferencia en sus vidas!</p>
@@ -10,7 +9,7 @@
 <div class="sucursales">
     <div class="mapa">
         <div class="img-mapa">
-            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118441.7508189042!2d-102.33949868006269!3d21.92283421088518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ee34d951e63d%3A0x83726d29b5fcf889!2sCentro%20De%20Control%2C%20Atenci%C3%B3n%20Y%20Bienestar%20Animal!5e0!3m2!1ses!2smx!4v1713893472544!5m2!1ses!2smx" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe class="map-map"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118441.7508189042!2d-102.33949868006269!3d21.92283421088518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ee34d951e63d%3A0x83726d29b5fcf889!2sCentro%20De%20Control%2C%20Atenci%C3%B3n%20Y%20Bienestar%20Animal!5e0!3m2!1ses!2smx!4v1713893472544!5m2!1ses!2smx" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 
@@ -44,37 +43,40 @@
     </div>
 </div>
 
-<div class="formulario-contacto">
-    <h3>Escríbenos</h3>
-        <div class="div-form-1">
-            <div class="div-form-1_1 form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" required [(ngModel)]="nombreForm">
-                <label for="floatingInput">Nombre</label>
-            </div>
+<!-- <div class="out">
+    <table>
+        <tr>
+            <td class="td-img"><img class="formulario" src="../../../assets/media/form-1.jpg" alt=""></td>
+            <td>
+                <div class="right">
+                    <h2 class="tit">Escríbenos</h2>
+                    <form >
+                        <input class="holder" type="text" name="nombre" placeholder="Nombre" required>
+                        <span class="spacer"></span> 
+                        <input class="holder" type="text" placeholder="Apellido" required>
+                        <span class="space"></span>
+                        <input class="holdermail" type="email" id="email" name="email" placeholder="Correo" required>
+                        <span class="space"></span>
+                        <textarea  class="holdertext" rows="4" cols="50" placeholder="Tu mensaje" required></textarea>
+                        <br> 
+                        <button pButton type="button" label="ENVIAR" class="p-button-custom"></button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div> -->
 
-            <div class="div-form-1_2 form-floating">
-                <input id="floatingInput" type="email" class="form-control" placeholder="email@example.com" required [(ngModel)]="correoForm">
-                <label for="floatingInput" class="form-label">Correo electrónico</label>
-            </div>
-        </div>
+<span class="spacedown"></span>
 
-        <div class="div-form-2">
-            <div>
-                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                <textarea [(ngModel)]="msgForm" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-        </div>
-</div>
 <p-toast></p-toast>
     <p-confirmDialog>
         <ng-template pTemplate="message" let-message>
             <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
-                <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
                 <p>{{ message.message }}</p>
             </div>
         </ng-template>
     </p-confirmDialog>
-<p-button (click)="confirm()"  label="Confirm"></p-button>
 
 
 <router-outlet></router-outlet>
