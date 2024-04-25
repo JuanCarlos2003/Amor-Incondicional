@@ -1,0 +1,80 @@
+<div class="contenedor">
+    <!-- <img src="../../../assets/media/fondo-1.jpeg" alt=""> -->
+    <div class="leyenda">
+        <h3>Encuentra tu Compañero Peludo</h3>
+        <p class="all-p">¡Contáctanos y adopta tu amigo fiel! Conoce a nuestros encantadores animales en busca de un hogar lleno de amor. ¡Haz la diferencia en sus vidas!</p>
+        <a routerLink="/mascotas" routerLinkActive="active">Haz la diferencia!</a>
+    </div>
+</div> 
+
+<div class="sucursales">
+    <div class="mapa">
+        <div class="img-mapa">
+            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118441.7508189042!2d-102.33949868006269!3d21.92283421088518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ee34d951e63d%3A0x83726d29b5fcf889!2sCentro%20De%20Control%2C%20Atenci%C3%B3n%20Y%20Bienestar%20Animal!5e0!3m2!1ses!2smx!4v1713893472544!5m2!1ses!2smx" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <div class="extra-1">
+        <h3>Encuentra Nuestros Refugios</h3>
+        <div class="divisor"></div>
+        <h5 class="first-h5">Descubre nuestras ubicaciones y conoce nuestro trabajo de cerca.</h5>
+        <h5>
+            Ven a visitarnos y conoce a los adorables animales que esperan por ti. Nuestros refugios son
+            más que un lugar, son hogares temporales donde brindamos amor y cuidado a aquellos que más
+            lo necesitan.
+        </h5>
+        <h5 class="last-h5">¡Te esperamos con los brazos abiertos para que seas parte de esta hermosa labor!</h5>
+
+        <h3>Comunícate con nosotros</h3>
+        <div class="divisor"></div>
+        <ul>
+            <li><strong>Para recibir atención inmediata, puedes llamarnos al: </strong> {{telefonoDeContacto}}.</li>
+            <li><strong>Envíanos un mensaje a: </strong> {{correoElectronico}}</li>
+            <li><strong>Nos encontrarás en: </strong> Alcaldes, Desarrollo Especial Parque Ecológico México, 20179</li>
+            <li>
+                <strong>Disponibles de</strong> 
+                <ul>
+                    @for(item of horarioDeAtencion; track item) {
+                        <li class="horarios">{{item}}</li>
+                    }
+                </ul>
+                ¡No dudes en contactarnos durante este tiempo para obtener ayuda o información adicional!
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="formulario-contacto">
+    <h3>Escríbenos</h3>
+        <div class="div-form-1">
+            <div class="div-form-1_1 form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" required [(ngModel)]="nombreForm">
+                <label for="floatingInput">Nombre</label>
+            </div>
+
+            <div class="div-form-1_2 form-floating">
+                <input id="floatingInput" type="email" class="form-control" placeholder="email@example.com" required [(ngModel)]="correoForm">
+                <label for="floatingInput" class="form-label">Correo electrónico</label>
+            </div>
+        </div>
+
+        <div class="div-form-2">
+            <div>
+                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                <textarea [(ngModel)]="msgForm" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </div>
+</div>
+<p-toast></p-toast>
+    <p-confirmDialog>
+        <ng-template pTemplate="message" let-message>
+            <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
+                <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+                <p>{{ message.message }}</p>
+            </div>
+        </ng-template>
+    </p-confirmDialog>
+<p-button (click)="confirm()"  label="Confirm"></p-button>
+
+
+<router-outlet></router-outlet>
