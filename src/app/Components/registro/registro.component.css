@@ -1,0 +1,146 @@
+/* @import "primeicons/primeicons.css"; */
+
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #0C0C0C;
+}
+
+.cita{
+    border-top: 4px solid #C09D89;
+    border-bottom: 4px solid #C09D89;
+    padding: 30px;
+    background-color: #f2bd8ecc;
+    overflow: hidden;
+}
+
+.no-sel{
+    display: none;
+}
+
+.tarjeta{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    height: min-content;
+}
+
+.caja{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.caja img{
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    border: 2px solid #C09D89;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 35%;
+}
+
+.carac{
+    display: flex;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+.dato p, .dato i{
+    margin: 0;
+    padding: 0;
+}
+
+.dato{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #0C0C0C;
+    background-color: #c09d8975;
+    padding: 5px;
+    margin: 10px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    border: 1px solid #C09D89;
+    padding: 60px 30px;
+    background-color: #f2bd8e8e ;
+    height: fit-content;
+    flex-grow: 1;
+}
+
+.campo-invalido{
+    border-radius: 7px;
+    border-bottom: 3px solid rgba(189, 32, 32, 0.445);
+    padding: 7px;
+}
+
+.interesado{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    margin-bottom: 40px;
+}
+
+.interesado label{
+    font-size: 18px;
+}
+
+input{
+    border-radius: 5px;
+    border: 1px solid #C09D89;
+    width: 300px;
+    padding: 5px;
+}
+
+small{
+    color: #772121;
+}
+
+.calendario{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
+
+.btn-registrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 3;
+    padding: 40px;
+    border-radius: 7px;
+    border: 1px solid #c09d89ab;
+    background-color: #c09d894b;
+}
+
+.btn-registrar button{
+    border-radius: 10px;
+    border: 1px solid #C09D89;
+    background-color: #0C0C0C;
+    padding: 20px;
+    height: 70px;
+    color: white;
+    font-size: 18px;
+}
+
+.alerta {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 80%;
+}

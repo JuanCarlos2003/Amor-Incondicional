@@ -1,0 +1,73 @@
+
+.name{
+   font-family: elegante;
+   letter-spacing: 5px;
+
+}
+.secundario{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+ .first {
+    width: 100%;
+    height:610px;
+    background-position: center;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+
+  } 
+   .small{
+   padding-left: 130px;
+   padding-right: 750px;
+   padding-top: 100px;
+  } 
+
+  /* .small{
+ padding-top: 170px;
+text-align: center;
+  } */
+
+  .po{
+   color: white;
+   /* font-family: mainfont; */
+
+  }
+  .si{
+   letter-spacing: 6px;
+  }
+.one{
+   font-size: 35px;
+}
+
+.two{
+   font-size: 65px;
+}
+.three{
+   font-size: 28px;
+   
+   
+}
+  .boton-redondo {
+   display: inline-block;
+   padding: 8px 20px;
+   background-color: rgb(191, 157, 136);
+   color: white;
+   border-radius: 50px;
+   border: none;
+   text-align: center;
+   font-size: 28px;
+   cursor: pointer;
+   transition: background-color 0.5s ease;
+   text-decoration: none; 
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   
+ }
+
+ .boton-redondo:hover {
+   background-color:rgb(141, 114, 102);
+   letter-spacing: 10px;
+ }
+ .cont-bot{
+   text-align: left; 
+   margin-top: 50px;
+   transition:  0.5s ease;
+   /* text-align: center; */
+ }

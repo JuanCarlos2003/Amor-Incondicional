@@ -1,0 +1,71 @@
+
+.relleno{
+  padding-top: 60px;
+  text-align: center;
+  padding-left: 260px;
+  padding-right: 260px;
+  color:#8D7366 ;
+}
+.rell{
+  font-size: 45px;
+  font-family: elegante;
+  
+}
+.relle{
+  font-size: 20px;
+  line-height: 1.7;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(94, 94, 94);
+}
+  .pont{
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-family: elegante;
+    color:#8D7366 ;
+
+  }
+  .vi{
+    padding-top: 20px;
+    margin: auto;
+  }
+  .tablas {
+    display: flex; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tablaone, .tablatwo {flex: 1;
+   padding: 10px; 
+  }
+
+.tablaone{
+  padding-left: 260px;
+  text-align: center;
+  padding-right: 25px;
+  font-size: 19px;
+  color: rgb(94, 94, 94);
+
+
+}
+.tablatwo{
+  padding-right: 260px;
+  text-align: center;
+ font-size: 19px;
+ color: rgb(94, 94, 94);
+
+}
+.space{
+display: block; 
+height: 50px; 
+}
+.adop{
+   color:#8D7366 ;
+   letter-spacing: 5px;
+  font-size: 20px;
+
+}
+.head{
+  font-size: 28px;
+  color:#8D7366 ;
+}
