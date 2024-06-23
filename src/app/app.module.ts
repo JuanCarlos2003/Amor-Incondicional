@@ -12,6 +12,12 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { HttpClientModule } from '@angular/common/http';
 import { RecursosEducativosComponent } from './Components/recursos-educativos/recursos-educativos.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { RecursosEducativosComponent } from './Components/recursos-educativos/re
     ToastModule,
     MessagesModule,
     HttpClientModule,
-    RecursosEducativosComponent
+    RecursosEducativosComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     provideClientHydration()

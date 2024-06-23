@@ -1,82 +1,83 @@
 <div [ngClass]="{'cita': seleccion, 'no-sel': !seleccion}">
-  @for (item of array; track item) { @if (item.nombre === seleccion) {
-  <div class="tarjeta">
-    <div class="caja">
-      <img [src]="item.imagen" class="imagen-animal" [alt]="item.nombre" />
-      <div class="">
-        <h3 class="nombre-animal">{{ item.nombre }}</h3>
-        <br>
-        <div class="carac">
-          <div class="dato">
-            <i class="pi pi-calendar" style="color: #58433e"></i>
-            <p class="texto-animal">&nbsp; {{ item.edad }}</p>
-          </div>
-          <div class="dato">
-            <i class="pi pi-palette" style="color: #58433e"></i>
-            <p class="texto-animal">&nbsp; {{ item.color }}</p>
-          </div>
-          <div class="dato">
-            <i class="pi pi-tag" style="color: #58433e"></i>
-            <p class="texto-animal">&nbsp; {{ item.raza }}</p>
-          </div>
-          <div class="dato">
-            <i class="pi pi-clock" style="color: #58433e"></i>
-            <p class="texto-animal">
-              &nbsp; {{ item.tiempoEnRefugio }} &nbsp;con nosotros
-            </p>
-          </div>
-          <div class="dato">
-            <i class="pi pi-info-circle" style="color: #58433e"></i>
-            <p class="texto-animal">&nbsp; {{ item.resumenComportamiento }}</p>
+  <ng-container *ngFor="let item of array">
+    <ng-container *ngIf="item.nombre === seleccion">
+      <div class="tarjeta">
+        <div class="caja">
+          <img [src]="item.imagen" class="imagen-animal" [alt]="item.nombre" />
+          <div class="">
+            <h3 class="nombre-animal">{{ item.nombre }}</h3>
+            <br>
+            <div class="carac">
+              <div class="dato">
+                <i class="pi pi-calendar" style="color: #58433e"></i>
+                <p class="texto-animal">&nbsp; {{ item.edad }}</p>
+              </div>
+              <div class="dato">
+                <i class="pi pi-palette" style="color: #58433e"></i>
+                <p class="texto-animal">&nbsp; {{ item.color }}</p>
+              </div>
+              <div class="dato">
+                <i class="pi pi-tag" style="color: #58433e"></i>
+                <p class="texto-animal">&nbsp; {{ item.raza }}</p>
+              </div>
+              <div class="dato">
+                <i class="pi pi-clock" style="color: #58433e"></i>
+                <p class="texto-animal">
+                  &nbsp; {{ item.tiempoEnRefugio }} &nbsp;con nosotros
+                </p>
+              </div>
+              <div class="dato">
+                <i class="pi pi-info-circle" style="color: #58433e"></i>
+                <p class="texto-animal">&nbsp; {{ item.resumenComportamiento }}</p>
+              </div>
+            </div>
           </div>
         </div>
+        
+        <div class="formulario" [formGroup]="formularioCita">
+          <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('nombre')?.valid && formularioCita.get('nombre')?.touched}">
+            <label for="nombre">Nombre del interesado</label>
+            <input pInputText id="nombre" formControlName="nombre" placeholder="Juan Pérez" />
+            <small *ngIf="formularioCita.get('nombre')?.invalid && formularioCita.get('nombre')?.touched">
+              Escribe un nombre válido.
+            </small>
+          </div>
+          <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('telefono')?.valid && formularioCita.get('telefono')?.touched}">
+            <label for="telefono">Teléfono del interesado</label>
+            <input pInputText id="telefono" formControlName="telefono" pKeyFilter="int" placeholder="4491234567" />
+            <small *ngIf="formularioCita.get('telefono')?.invalid && formularioCita.get('telefono')?.touched">
+              Escribe un teléfono válido.
+            </small>
+          </div>
+          <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('correo')?.valid && formularioCita.get('correo')?.touched}">
+            <label for="correo">E-mail del interesado</label>
+            <input pInputText id="correo" formControlName="correo" placeholder="correo@ejemplo.com" />
+            <small *ngIf="formularioCita.get('correo')?.invalid && formularioCita.get('correo')?.touched">
+              Escribe un correo electrónico válido.
+            </small>
+          </div>
+        </div>
+        
+        <div class="calendario">
+          <p-calendar class="" [inline]="true" [(ngModel)]="date" [showTime]="true" [showSeconds]="false" hourFormat="24" (onSelect)="onSelect($event)"></p-calendar>
+        </div>
       </div>
-    </div>
-    
-    <div class="formulario">
-      <div class="interesado" [ngClass]="{'campo-invalido': !nombre}">
-        <label for="interesado">Nombre del interesado</label>
-        <input pInputText id="interesado" placeholder="Juan Pérez" [(ngModel)]="nombre" />
-        <small id="interesado-small" *ngIf="!nombre">Escribe tu nombre para hacer la cita.</small>
+      <div class="btn-registrar">
+        <button (click)="guardarCita()" [disabled]="!formularioCita.valid">Guardar Cita</button>
       </div>
-      <div class="interesado" [ngClass]="{'campo-invalido': !telefono}">
-        <label for="telefono">Teléfono del interesado</label>
-        <input pInputText id="telefono" pKeyFilter="int" placeholder="4491234567" [(ngModel)]="telefono" />
-        <small id="telefono-small" *ngIf="!telefono">Escribe tu teléfono para hacer la cita.</small>
-      </div>
-      <div class="interesado" [ngClass]="{'campo-invalido': !correo}">
-        <label for="correo">E-mail del interesado</label>
-        <input pInputText id="correo" placeholder="correo@ejemplo.com" [(ngModel)]="correo" />
-        <small id="correo-small" *ngIf="!correo">Escribe tu correo electrónico para hacer la cita.</small>
-      </div>
-    </div>
-    
-    <div class="calendario">
-      <p-calendar class="" [inline]="true" [(ngModel)]="date" [showTime]="true" [showSeconds]="false" hourFormat="24" (onSelect)="onSelect($event)"></p-calendar>
-    </div>
-    
-  </div>
-  <div class="btn-registrar">
-    <button (click)="guardarCita()" [disabled]="!nombre || !telefono || !correo">Guardar Cita</button>
-  </div>
-  } }
+    </ng-container>
+  </ng-container>
 </div>
 
-@if (guardada === 1 && !quitada) {
-  <div class="alert alert-danger alert-dismissible fade show alerta" role="alert">
-    <strong>¡Fecha y hora inválidas!</strong> Debe ser posterior a la fecha y hora actual
-    <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-}
-@if (guardada === 2 && !quitada) {
-  <div class="alert alert-success alert-dismissible fade show alerta" role="alert">
-    <strong>¡Cita registrada con éxito!</strong> Te esperamos pronto
-    <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-}
-@if (guardada === 3 && !quitada) {
-  <div class="alert alert-warning alert-dismissible fade show alerta" role="alert">
-    <strong>¡No se puede registrar!</strong> La fecha y hora seleccionada ya está ocupada
-    <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-}
+<div *ngIf="guardada === 1 && !quitada" class="alert alert-danger alert-dismissible fade show alerta" role="alert">
+  <strong>¡Fecha y hora inválidas!</strong> Debe ser posterior a la fecha y hora actual
+  <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div *ngIf="guardada === 2 && !quitada" class="alert alert-success alert-dismissible fade show alerta" role="alert">
+  <strong>¡Cita registrada con éxito!</strong> Te esperamos pronto
+  <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div *ngIf="guardada === 3 && !quitada" class="alert alert-warning alert-dismissible fade show alerta" role="alert">
+  <strong>¡No se puede registrar!</strong> La fecha y hora seleccionada ya está ocupada
+  <button type="button" class="btn-close" (click)="quitar()" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

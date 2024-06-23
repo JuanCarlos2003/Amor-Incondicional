@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Animales } from '../../interfaces/animales';
 import { AnimalesService } from '../../services/animales.service';
 import { RegistroComponent } from '../registro/registro.component';
@@ -13,10 +13,11 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './nuestros-perros.component.html',
   styleUrl: './nuestros-perros.component.css'
 })
-export class NuestrosPerrosComponent {
+export class NuestrosPerrosComponent implements OnInit {
   array: Animales [] = [];
   seleccion: string = "";
   actualizar: boolean;
+  cargando: boolean = false;
 
   constructor(public animalesService: AnimalesService){
     this.actualizar = false;
@@ -28,11 +29,16 @@ export class NuestrosPerrosComponent {
   }
 
   recuperarDatos():void{
-    console.log("entre")
+    console.log("entre");
+    this.cargando = true;
 
     this.animalesService.retornar().subscribe({
       next: this.successRequest.bind(this),
-      error: (err) => {console.log(err)}
+      error: (err) => {
+        console.log(err);
+        this.cargando = false;
+      },
+      complete: () => this.cargando = false
     });
   }
 
@@ -44,6 +50,10 @@ export class NuestrosPerrosComponent {
 
   hacerCita(sel:string){
     this.seleccion = sel;
+    const element = document.getElementById('seccion-cita');
+    if(element){
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   recibirActu(actu: boolean){

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { Cita } from '../interfaces/cita';
+import { CitaService } from '../services/cita.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-citas',
@@ -41,7 +43,7 @@ export class CitasComponent implements OnInit, OnChanges {
     timeZone: 'America/Mexico_City'
   };
 
-  constructor(){
+  constructor(private citaService: CitaService){
     this.actualizar = false;
     this.auxActu = false;
     this.siHay = false;
@@ -65,10 +67,15 @@ export class CitasComponent implements OnInit, OnChanges {
   }
 
   obtenerCitas(): void {
-    const citasGuardadas = localStorage.getItem('citas');
-    if (citasGuardadas) {
-      this.citas = JSON.parse(citasGuardadas);
+    this.citaService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ clave: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.citas = data;
       this.siHay = true;
-    }
+    });
   }
 }
