@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="arriba">
+    <div class="texto">
+      <h1>Nuestros perros y gatos</h1>
+      <p>¡Conoce a los animales de amor incondicional!</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="animales">
+    @for (item of array; track item) {
+    <div class="tarjeta">
+      <div class="card caja" (click)="hacerCita(item.nombre)">
+        <img [src]="item.imagen" class="card-img-top" [alt]="item.nombre" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nombre }}</h5>
+          <div class="dato">
+            <i class="pi pi-calendar" style="color: #58433E"></i>
+            <p class="card-text">&nbsp; {{ item.edad }}</p>
+          </div>
+          <div class="dato">
+            <i class="pi pi-palette" style="color: #58433E"></i>
+            <p class="card-text">&nbsp; {{ item.color }}</p>
+          </div>
+          <div class="dato">
+            <i class="pi pi-tag" style="color: #58433E"></i>
+            <p class="card-text">&nbsp; {{ item.raza }}</p>
+          </div>
+          <div class="dato">
+            <i class="pi pi-clock" style="color: #58433E"></i>
+            <p class="card-text">&nbsp; {{ item.tiempoEnRefugio }} &nbsp;con nosotros</p>
+          </div>
+          <div class="dato">
+            <i class="pi pi-info-circle" style="color: #58433E"></i>
+            <p class="card-text">
+              &nbsp; {{ item.resumenComportamiento }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <app-citas [actualizar]="actualizar"></app-citas>
+
+  <app-registro id="seccion-cita" [array]="array" [seleccion]="seleccion" (actualizacion)="recibirActu($event)"></app-registro>
+  <app-footer></app-footer>
+  

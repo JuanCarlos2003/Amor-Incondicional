@@ -1,0 +1,43 @@
+*{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #0C0C0C;
+}
+
+@font-face {
+    font-family: 'elegante';
+    src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf') format('truetype');
+  }
+
+h2 {
+    font-family: 'elegante';
+}
+
+.tablas{
+    margin: 70px 150px;
+}
+
+.no-tablas{
+    display: none;
+}
+
+.op{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+}
+
+.no-hay{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #464646;
+}
+
+.encabezado{
+    border-bottom: 1px solid #58433ec4;
+}
+
+.lineas{
+    border-bottom: 1px solid #8d7366c4;
+}

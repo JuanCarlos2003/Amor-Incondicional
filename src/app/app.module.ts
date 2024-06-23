@@ -10,10 +10,12 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import { HttpClientModule } from '@angular/common/http';
+import { RecursosEducativosComponent } from './Components/recursos-educativos/recursos-educativos.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,9 @@ import { MessagesModule } from 'primeng/messages';
     BrowserAnimationsModule,
     ButtonModule,
     ToastModule,
-    MessagesModule
+    MessagesModule,
+    HttpClientModule,
+    RecursosEducativosComponent
   ],
   providers: [
     provideClientHydration()

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-// import { MessageService } from 'primeng/api';
-
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  // providers: [MessageService],
 })
 export class AppComponent {
   title = 'Amor Incondicional';

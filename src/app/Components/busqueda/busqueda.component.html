@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div [ngClass]="{'tablas': true, 'no-tablas': false}">
+    <div class="op">
+        <h2>Citas Registradas</h2>
+
+        <p-selectButton 
+        [options]="stateOptions" 
+        [(ngModel)]="tiempo"  
+        optionLabel="label" 
+        optionValue="value" />
+    </div>
+
+    @if (siHay) {
+        <p-table [value]="citas" styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr [ngClass]="{'encabezado': true}">
+                    <th>Interesado</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Fecha de visita</th>
+                    <th>Refugiado</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cita>
+                @if (cita.nombreIn == term) {
+                    @if (tiempo == 1) {
+                        @if (fechaActual >= cita.fechaCita) {
+                            <tr [ngClass]="{'lineas': true}">
+                                <td>{{ cita.nombreIn }}</td>
+                                <td>{{ cita.telefonoIn }}</td>
+                                <td>{{ cita.correoIn }}</td>
+                                <td>{{ cita.fechaCita }}</td>
+                                <td>{{ cita.nombreAn }}</td>
+                            </tr>
+                        }
+                    }
+                    @else {
+                        @if (fechaActual < cita.fechaCita) {
+                            <tr [ngClass]="{'lineas': true}">
+                                <td>{{ cita.nombreIn }}</td>
+                                <td>{{ cita.telefonoIn }}</td>
+                                <td>{{ cita.correoIn }}</td>
+                                <td>{{ cita.fechaCita }}</td>
+                                <td>{{ cita.nombreAn }}</td>
+                            </tr>
+                        }
+                    }
+                }
+            </ng-template>
+        </p-table>
+    }
+    @else {
+        <div class="no-hay">
+            <h4>No hay citas registradas</h4>
+        </div>
+    }
+</div>
+<app-footer></app-footer>

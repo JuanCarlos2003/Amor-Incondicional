@@ -1,107 +1,54 @@
-* {font-family: "Roboto Flex", sans-serif;}
-/* Primera seccion */
-div.contenedor {
-    min-height: 550px;
-    max-height: 550px;
-    background-image: url(../../../assets/media/fondo-1.jpeg);
-    background-size: cover;
-    overflow: hidden;
-    min-width: 100%;
+/* Tercera seccion */
+div.out{font-family: Georgia, 'Times New Roman', Times, serif;color: rgb(95, 94, 94);margin-top: 15px;}
+.tit{font-weight: bolder;margin: 10px 0 15px 0;}
+.right{text-align: left;padding-left: 25px;min-height: 100%;}
+table{width: 100%;border-collapse: collapse;height: 100%;}
+img.formulario{width: 540px;height: auto;}
+.cont-bot{text-align: left;margin-top: 50px;}
+td.td-img {text-align: right;}
+.holder{
+    width: 260px;
+    height: 35px;
+    padding-left: 20px;
+    color: #333;   
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-div.leyenda {
-    align-items: center;
-    max-width: 500px;
-    min-height: 220px;
-    max-height: 220px;
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 2rem;
-    padding: 30px;
-    text-align: center;
-    margin: 50px 50px;
-    color: white;
+.holdermail{
+    width: 540px;
+    height: 35px;
+    padding-left: 20px;
+    color: #333;  
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-h3 {
-    font-weight: 800;
-    font-size: 25px;
-    margin: 0 0 10px 0;
+.holdertext{
+    width: 540px;
+    padding-left: 20px;
+    padding-top: 12px;
+    color: #333;  
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-p.all-p {
-    font-weight: 500;
-    margin: 0;
-}
-a:hover {
-    box-shadow: 0 3px 10px #d2b48c;
-    transform: scale(1.01);
-}
-a {
-    transition: transform 0.2s ease-in;
-    text-align: center;
-    text-decoration: none;
+.spacer {margin-right: 20px;}
+.space {display: block; height: 20px;}
+.spacedown{display: block; height: 70px; }
+.p-button-custom {
     display: inline-block;
-    margin: 15px 0 0 0;
-    background-color: white;
-    border-radius: 1rem;
-    padding: 5px 25px;
+    padding: 7px 22px;
+    background-color: rgb(191, 157, 136);
+    color: white;
+    border-radius: 50px;
     border: none;
-    border-left: 3px solid #D2B48C;
-    border-right: 3px solid #D2B48C;
-    font-weight: 600;
-    color: black;
-}
-/* Segunda seccion */
-div.sucursales {
-    display: flex;
-    justify-content: center;
     text-align: center;
-}
-div.mapa {
-    padding: 30px;
-    text-align: center;
-    background-color: white;
-}
-div.img-mapa {
-    height: 606px;
-    width: 606px;
-    border: 3px solid #D2B48C;
-}
-.map-map {width: 600px;height: 600px;}
-div.extra-1 {
-    background-color: white;
-    width: 40%;
-    padding: 30px;
-    text-align: center;
-}
-div.extra-1  > h3 {
-    font-weight: 600;
-    margin: 0;
-    font-size: 28px;
-    padding: 5px 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-div.extra-1 > h5 {
     font-size: 18px;
-    font-weight: 500;
-    margin: 10px 0 10px 0;
-    text-align: center;
-    padding: 2px 15px;
+    cursor: pointer;
+    transition: background-color 0.10s ease;
+    text-decoration: none; 
+    margin: 0;
 }
-div.extra-1 > h5.last-h5 {margin-bottom: 60px;}
-div.extra-1 > h5.first-h5 {margin-top: 20px;}
-ul {
-    font-size: 16px;
-    text-align: left;
-    margin: auto;
-    list-style-type: none;
-}
-li {list-style: inside none;}
-li.horarios {list-style: inside disc;}
-div.divisor {
-    min-height: 7px;
-    border-bottom: 3px solid #D2B48C;
-    border-top: 2px solid #b59f82;
-    margin: 15px 0 20px 0;
-}
+.p-button-custom .p-button-label {color: #ffffff;}
+.p-button-custom:hover {background-color:rgb(141, 114, 102);letter-spacing: 2px;}
 
 /* Responsive */
 @media screen and (max-width: 1500px) {
@@ -126,169 +73,4 @@ div.divisor {
         margin: 5px 0 15px 0;
     }
     ul {font-size: 15px;}
-}
-
-/* Tercera seccion */
-div.div-form-1 {
-    display: flex;
-    /* border: 1px solid turquoise; */
-    justify-content: space-between;
-}
-div.div-form-2 {
-    /* border: 1px solid turquoise; */
-    margin: 10px 0;
-    /* display: flex; */
-    /* justify-content: center; */
-}
-h3.fc {
-    font-weight: 600;
-    margin: 0;
-    font-size: 30px;
-    padding: 10px 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-input {
-    width: 300px;
-}
-label {font-weight: 600;}
-textarea {
-    resize: none;
-    width: 100%;
-    min-height: 150px !important;
-}
-div.formulario-contacto {
-    /* border: 1px solid turquoise; */
-    /* width: 620px; */
-    padding: 10px 0;
-    width: 33%;
-    margin:0 0 10px 0;
-}
-.p-btn {
-    background-color: #D2B48C !important;
-    color: white !important;
-}
-div.div-2 {
-    display: flex;
-    justify-content: center;
-}
-div.img-form {
-    /* border: 1px solid turquoise; */
-    padding: 10px 0;
-    margin:0 0 10px 0;
-    width: 33%;
-}
-div.divisor-v {
-    min-height: 100%;
-    min-width: 7px;
-    border-left: 3px solid #D2B48C;
-    border-right: 2px solid #b59f82;
-    margin: 15px 20px 20px 20px;
-}
-
-/* Giselle */
-
-.tit{
-    font-weight: bolder;
-}
-
-.right{
-    text-align: left;
-    padding-left: 30px;
-}
-
-.out{
-    padding-left: 200px;
-    padding-right: 200px;
-    padding-top: 50px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgb(95, 94, 94);
-}
-
-table{
-    width: 100%;
-    border-collapse: collapse;
-}
-
-img.formulario{
-    width: 540px;
-    height: auto;
-
-}
-
-.cont-bot{
-    text-align: left; 
-    margin-top: 50px;
-}
-
-
-td.td-img {
-    text-align: right;
-}
-
-.holder{
-    width: 250px;
-    height: 35px;
-    padding-left: 20px;
-
-    color: #333;   
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.holdermail{
-    width: 540px;
-    height: 35px;
-    padding-left: 20px;
-
-    color: #333;  
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.holdertext{
-    width: 540px;
-    padding-left: 20px;
-    padding-top: 12px;
-
-    color: #333;  
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    
-}
-
-.spacer {
-    margin-right: 40px; 
-}
-
-.space {
-    display: block; 
-    height: 35px; 
-}
-.spacedown{
-    display: block; 
-    height: 70px; 
-}
-
-.p-button-custom {
-    display: inline-block;
-    padding: 5px 20px;
-    background-color: rgb(191, 157, 136);
-    color: white;
-    border-radius: 50px;
-    border: none;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.10s ease;
-    text-decoration: none; 
-}
-
-.p-button-custom .p-button-label {
-    color: #ffffff;
-}
-
-.p-button-custom:hover {
-    background-color:rgb(141, 114, 102);
-    letter-spacing: 2px;
 }

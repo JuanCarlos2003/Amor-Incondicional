@@ -1,18 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
-import { InicioComponent } from '../inicio/inicio.component';
-import { PerrosyGatosComponent } from '../perrosy-gatos/perrosy-gatos.component';
-import { AyudaComponent } from '../ayuda/ayuda.component';
-import { AboutUsComponent } from '../about-us/about-us.component';
-import { ContactoComponent } from '../contacto/contacto.component';
+import { FormsModule } from '@angular/forms';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, ContactoComponent, InicioComponent, PerrosyGatosComponent, AyudaComponent, AboutUsComponent],
+  imports: [RouterOutlet, RouterModule, IconFieldModule, InputIconModule, FormsModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  searchTerm: string = '';
 
+  constructor(private router: Router) {}
+
+  search() {
+    const term = this.searchTerm.trim();
+
+    if (term) {
+      this.router.navigate(['/busqueda', { term: term }]);
+    }
+  }
 }

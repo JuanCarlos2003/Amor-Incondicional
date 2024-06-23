@@ -1,0 +1,112 @@
+/* * {font-family: "Roboto Flex", sans-serif;} */
+/* Primera seccion */
+@font-face {
+    font-family: 'elegante';
+    src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf') format('truetype');
+  }
+div.contenedor {
+    min-height: 550px;
+    max-height: 550px;
+    background-image: url(../../../assets/media/fondo-1.jpeg);
+    background-size: cover;
+    overflow: hidden;
+    min-width: 100%;
+}
+div.leyenda {
+    align-items: center;
+    max-width: 500px;
+    min-height: 220px;
+    max-height: 220px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 2rem;
+    padding: 30px;
+    text-align: center;
+    margin: 50px 50px;
+    color: white;
+}
+h3 {
+    font-family: 'elegante';
+    font-weight: 800;
+    font-size: 25px;
+    margin: 0 0 10px 0;
+}
+p.all-p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    margin: 0;
+}
+a:hover {
+    box-shadow: 0 3px 10px #d2b48c;
+    transform: scale(1.01);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+a {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: transform 0.2s ease-in;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 15px 0 0 0;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 5px 25px;
+    border: none;
+    border-left: 3px solid #D2B48C;
+    border-right: 3px solid #D2B48C;
+    font-weight: 600;
+    color: black;
+}
+/* Segunda seccion */
+div.sucursales {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+div.mapa {
+    padding: 30px;
+    text-align: center;
+    background-color: white;
+}
+div.img-mapa {
+    height: 606px;
+    width: 606px;
+    border: 3px solid #D2B48C;
+}
+.map-map {width: 600px;height: 600px;}
+div.extra-1 {
+    background-color: white;
+    width: 40%;
+    padding: 30px;
+    text-align: center;
+}
+div.extra-1  > h3 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 28px;
+    padding: 5px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+div.extra-1 > h5 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0 10px 0;
+    text-align: center;
+    padding: 2px 15px;
+}
+div.extra-1 > h5.last-h5 {margin-bottom: 60px;}
+div.extra-1 > h5.first-h5 {margin-top: 20px;}
+ul {
+    font-size: 16px;
+    text-align: left;
+    margin: auto;
+    list-style-type: none;
+}
+li {list-style: inside none;}
+li.horarios {list-style: inside disc;}
+div.divisor {
+    min-height: 7px;
+    border-bottom: 3px solid #D2B48C;
+    border-top: 2px solid #b59f82;
+    margin: 15px 0 20px 0;
+}

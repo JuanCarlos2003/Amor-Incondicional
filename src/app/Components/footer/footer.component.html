@@ -1,17 +1,51 @@
 <div class="contenedor">
-    <div class="social">
-        <div class="line"></div>
-        <div class="icons">
-            <!-- <img src="../../../assets/media/logo-x.png" alt="X">
-            <img src="../../../assets/media/logo-ig.png" alt="Instagram">
-            <img src="../../../assets/media/logo-tt.png" alt="TikTok"> -->
-            <a><img src="../../../assets/media/logo-x.png" alt="X"></a>
-            <a><img src="../../../assets/media/logo-ig.png" alt="Instagram"></a>
-            <a><img src="../../../assets/media/logo-tt.png" alt="TikTok"></a>
-        </div>
-        <div class="line"></div>
+    <div class="contenido">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="border-right text-center td-img">
+                        <img src="assets/media/logo-prim.jpg" alt="...">
+                    </td>        
+                    <td class="border-right contenido-top">
+                        <p class="titulo">Amor Incondicional</p>
+                        <a class="texto" routerLink="/about" routerLinkActive="active">Nosotros </a>
+                        <div class="divisor"></div>
+                        <p class="titulo">Contáctanos</p>
+                        <a class="texto" routerLink="/contacto" routerLinkActive="active">Escríbenos</a>
+                        <div class="divisor"></div>
+                        <p class="titulo">¡Adopta ahora!</p>
+                        <a class="texto" routerLink="/mascotas" routerLinkActive="active">Adopta</a><br>
+                        <a class="texto" routerLink="/ayuda" routerLinkActive="active">Ayuda al refugio</a>
+                    </td>            
+                    <td class="border-right contenido-top">
+                        <p class="titulo">Nuestras Redes Sociales</p>
+                        <div class="divisor-2"></div>
+                        <a class="texto text-center link-2" href=""><i class="fa-brands fa-facebook-f fa-lg link-2 y-border"></i>{{face}}</a><br>
+                        <a class="texto text-center link-2" href=""><i class="fa-brands fa-x-twitter fa-lg link-2 y-border"></i> {{x}}</a><br>
+                        <a class="texto text-center link-2" href=""><i class="fa-brands fa-tiktok fa-lg link-2 y-border"></i> {{tt}}</a><br>
+                        <a class="texto text-center link-2" href=""><i class="fa-brands fa-instagram fa-lg link-2 y-border"></i> {{ig}}</a><br>
+
+                    </td>
+                    <td class="contenido-top">
+                        <p class="titulo">Desarrolladores</p>
+                        <p class="texto p-t-f"><span>César Reyes Barrientos</span><i class="fa-solid fa-star fa-lg no-border"></i></p>
+                        <p class="texto p-t-f"><span>Giselle Vargas Alvarado</span><i class="fa-solid fa-cat fa-lg no-border"></i></p>
+                        <p class="texto p-t-f"><span>Sioamara Saénz Reyes</span><i class="fa-solid fa-otter fa-lg no-border"></i></p>
+                        <p class="texto p-t-f"><span>Fabian Reyes Medina</span><i class="fa-brands fa-python fa-lg no-border"></i></p>
+                        <p class="texto p-t-f"><span>Juan Carlos Morales Chavez</span><i class="fa-solid fa-music fa-lg no-border"></i></p>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
     </div>
-    <p class="name">Amor Incondicional</p>
-    <p>© 2024 Amor incondicional. Todos los derechos reservados.</p>
-    <p>Esta página es solo un proyecto estudiantil. ¡Gracias por visitarnos!</p>
+    <div class="copy">
+        <p>© 2024 Amor incondicional. Todos los derechos reservados.</p>
+        <p>Esta página es solo un proyecto estudiantil. ¡Gracias por visitarnos!</p>
+    </div>
 </div>
+<router-outlet></router-outlet>
+
+<!-- <div class="flechita">
+    <i class="pi pi-chevron-circle-up" style="font-size: 25px"></i>
+</div> -->

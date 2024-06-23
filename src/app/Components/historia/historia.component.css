@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'elegante';
+    src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf') format('truetype');
+  }
+  .nues{
+    font-family: elegante;
+    color:#8D7366 ;
+  }
+.big{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.titulo{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.con {
+    display: flex;
+    /* padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important; */
+    
+   
+}
+.box {
+    /* flex-grow: 1 !important;
+    height: 500px; */
+    flex: 1;
+    width: 33.33%;
+    position: relative;
+   
+    
+
+}
+.tex{
+    padding-left: 30px;
+    padding-right: 30px;
+   padding-top: 30px;
+   text-align: center;
+   font-size: 18px;
+   
+
+   
+}
+.box1 {
+
+    background-color: rgb(2, 139, 173);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.box2 {
+    background-color: rgb(87, 84, 79);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}   
+.box3 {
+    background-color:rgb(127, 0, 51);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.ima {
+    /* width: 512px;
+    height: 306px;  */
+    width: 100% !important;
+    width: 100% !important;;
+    
+}
+
+.ima {
+    filter: brightness(80%) grayscale(03%);
+  }
+  .ima3{
+    filter: brightness(70%) grayscale(03%);
+  }
+  .ima2{
+    filter: brightness(70%) grayscale(03%);
+  }
+
+.colo {
+    position: relative; 
+}
+
+.sobrepuesto{  
+  position: absolute; 
+  top: 200px; 
+  left:30%; 
+  z-index: 1; 
+  color: white;
+}
+.colo2 {
+    position: relative; 
+}
+
+.sobrepuesto2{  
+  position: absolute; 
+  top: 200px; 
+  left: 30%; 
+  z-index: 1; 
+  color: white;
+}
+
+.colo3 {
+    position: relative; 
+}
+
+.sobrepuesto3{  
+  position: absolute; 
+  top: 200px;
+  left: 32%; 
+  z-index: 1; 
+  color: white;
+}
+.sobre{
+    font-size: 35px;
+    letter-spacing: 8px;
+    font-weight: bolder;
+}
+.adop{
+    color: white;
+    letter-spacing: 5px;
+    font-size: 20px;
+}

@@ -1,8 +1,9 @@
+<app-header></app-header>
 <div class="contenedor">
     <div class="leyenda">
         <h3>Encuentra tu Compañero Peludo</h3>
         <p class="all-p">¡Contáctanos y adopta tu amigo fiel! Conoce a nuestros encantadores animales en busca de un hogar lleno de amor. ¡Haz la diferencia en sus vidas!</p>
-        <a routerLink="/mascotas" routerLinkActive="active">Haz la diferencia!</a>
+        <a routerLink="/contacto" routerLinkActive="active">Haz la diferencia!</a>
     </div>
 </div> 
 
@@ -43,40 +44,41 @@
     </div>
 </div>
 
-<!-- <div class="out">
+<div class="out">
     <table>
-        <tr>
-            <td class="td-img"><img class="formulario" src="../../../assets/media/form-1.jpg" alt=""></td>
-            <td>
-                <div class="right">
-                    <h2 class="tit">Escríbenos</h2>
-                    <form >
-                        <input class="holder" type="text" name="nombre" placeholder="Nombre" required>
-                        <span class="spacer"></span> 
-                        <input class="holder" type="text" placeholder="Apellido" required>
-                        <span class="space"></span>
-                        <input class="holdermail" type="email" id="email" name="email" placeholder="Correo" required>
-                        <span class="space"></span>
-                        <textarea  class="holdertext" rows="4" cols="50" placeholder="Tu mensaje" required></textarea>
-                        <br> 
-                        <button pButton type="button" label="ENVIAR" class="p-button-custom"></button>
-                    </form>
-                </div>
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td class="td-img"><img class="formulario" src="assets/media/form-1.jpg" alt=""></td>
+                <td>
+                    <div class="right">
+                        <h2 style="font-family: 'elegante';" class="tit">Escríbenos</h2>
+                        <form >
+                            <input class="holder" type="text" name="nombre" placeholder="Nombre" [(ngModel)]="nombreForm" required>
+                            <span class="spacer"></span> 
+                            <input class="holder" type="text" name="apellido" placeholder="Apellido" [(ngModel)]="apellidoForm" required>
+                            <span class="space"></span>
+                            <input class="holdermail" type="email" id="email" name="email" placeholder="Correo" [(ngModel)]="correoForm" required>
+                            <span class="space"></span>
+                            <textarea  class="holdertext" rows="4" cols="50" name="mensajeFormulario" placeholder="Tu mensaje" [(ngModel)]="msgForm" required></textarea>
+                            <span class="space"></span>
+                            <button pButton type="button" label="ENVIAR" class="p-button-custom" (click)="confirm()"></button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
     </table>
-</div> -->
+</div>
 
 <span class="spacedown"></span>
 
 <p-toast></p-toast>
-    <p-confirmDialog>
+<p-confirmDialog>
         <ng-template pTemplate="message" let-message>
             <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
                 <p>{{ message.message }}</p>
             </div>
         </ng-template>
-    </p-confirmDialog>
-
-
-<router-outlet></router-outlet>
+</p-confirmDialog>
+<!-- <router-outlet></router-outlet> -->
+<app-footer></app-footer>

@@ -1,0 +1,36 @@
+.animate__animated.animate__backInLeft {
+    --animate-duration: 2s;
+}
+
+.animate__animated.animate__backInRight {
+    --animate-duration: 2s;
+}
+
+.animate__animated.animate__backInUp {
+    --animate-duration: 2s;
+}
+
+.card{
+    background-color: #8D7366;
+    color: antiquewhite;
+
+}
+
+
+  .tituloS {
+    font-family: siobb;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+  @font-face {
+    font-family: siobb;
+    src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf');
+  }
+
+
+
+#siobb{
+    background-color: #8D7366;
+}
