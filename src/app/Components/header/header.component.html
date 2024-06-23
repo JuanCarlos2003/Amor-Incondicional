@@ -1,17 +1,20 @@
 <div class="menu">
-    <nav> 
-      <a class="a-fake2"></a>
-      <a routerLink="/mascotas" routerLinkActive="active">Nuetras Mascotas</a> 
-      <a routerLink="/ayuda" routerLinkActive="active">Como Ayudar?</a>
-      <a class="logo" routerLink="/home" routerLinkActive="active"><img src="assets/media/logo-AI.jpg" alt="..."></a>
-      <a class="logo-fake"></a>
-      <a routerLink="/about" routerLinkActive="active">Nosotros</a>
-      <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
-      <a class="a-search">
+  <nav> 
+    <a class="a-fake2">Administrador</a>
+    <a routerLink="/mascotas" routerLinkActive="active">Nuestras Mascotas</a> 
+    <a routerLink="/ayuda" routerLinkActive="active">¿Como Ayudar?</a>
+    <a class="logo" routerLink="/home" routerLinkActive="active"><img src="assets/media/logo-AI.jpg" alt="..."></a>
+    <a class="logo-fake">YO</a>
+    <a routerLink="/about" routerLinkActive="active">Nosotros</a>
+    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+    <a class="a-search">
+      <div id="usuarios">
+        <h6 id="bienvenida">Bienvenido, Pancho</h6>
         <p-iconField iconPosition="right">
           <p-inputIcon styleClass="pi pi-search" (click)="search()" />
           <input type="text" pInputText placeholder="Search" (keydown.enter)="search()" [(ngModel)]="searchTerm" />
-      </p-iconField>
-      </a>
-    </nav>
+        </p-iconField>
+      </div>
+    </a>
+  </nav>
 </div>

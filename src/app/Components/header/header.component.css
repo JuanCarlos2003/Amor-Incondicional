@@ -5,11 +5,11 @@
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 999;
+    /* z-index: 999; */
 }
 
 nav{
-    height: 75px;
+    height: 110px;
     border-bottom: 3px solid #74502b;
     text-align: center;
     display: flex;
@@ -25,12 +25,14 @@ img {
 }
 
 a {
-    display: inline-block;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-weight: 600;
     font-size: 18px;
-    margin: 0;
-    height: 100%;
     padding: 20px 20px;
+    justify-content: space-around;
     width: 250px;
     text-align: center;
     text-decoration: none;
@@ -76,4 +78,18 @@ input {
     a.a-logo-fake {width: 150px;}
     a.a-search {width: 205px; padding:20px 0;}
     input {width: 180px;}
+}
+
+#usuarios{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+
+#bienvenida{
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #654321;
 }
