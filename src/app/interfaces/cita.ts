@@ -5,4 +5,7 @@ export interface Cita {
     correoIn?: string;
     fechaCita?: any;
     nombreAn?: string;
+    genero?: string;
+    servicios?: string[];
+    motivo?: string;
 }

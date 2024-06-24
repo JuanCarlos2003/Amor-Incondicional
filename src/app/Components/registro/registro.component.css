@@ -28,15 +28,15 @@
 .caja{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     overflow: hidden;
     margin-bottom: 30px;
     flex-grow: 1;
 }
 
 .caja img{
-    width: 400px;
-    height: 300px;
+    width: 380px;
+    height: 280px;
     margin-bottom: 20px;
     border-radius: 7px;
     border: 2px solid #C09D89;
@@ -48,7 +48,7 @@
 .carac{
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
+    width: 380px;
 }
 
 .dato p, .dato i{
@@ -76,6 +76,7 @@
     border: 1px solid #C09D89;
     padding: 60px 30px;
     background-color: #f2bd8e8e ;
+    width: 400px;
     height: fit-content;
     flex-grow: 1;
 }
@@ -91,21 +92,39 @@
     flex-direction: column;
     row-gap: 5px;
     margin-bottom: 40px;
+    width: 300px;
 }
 
-.interesado label{
+.inter{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    margin-bottom: 40px;
+    width: auto;
+}
+
+.interesado label, .inter label{
     font-size: 18px;
 }
 
-input{
+input[type="text"]{
     border-radius: 5px;
     border: 1px solid #C09D89;
     width: 300px;
     padding: 5px;
 }
 
+.opciones > input{
+    margin-right: 10px;
+}
+
 small{
     color: #772121;
+}
+
+.selecciones{
+    display: flex;
+    column-gap: 20px;
 }
 
 .calendario{

@@ -56,6 +56,60 @@
               Escribe un correo electrónico válido.
             </small>
           </div>
+
+          <div class="selecciones">
+            <div class="inter" [ngClass]="{'campo-invalido': !formularioCita.get('genero')?.valid && formularioCita.get('genero')?.touched}">
+              <label>Género</label>
+              <div class="opciones">
+                <input type="radio" id="masculino" formControlName="genero" value="Masculino" />
+                <label for="masculino">Masculino</label>
+              </div>
+              <div class="opciones">
+                <input type="radio" id="femenino" formControlName="genero" value="Femenino" />
+                <label for="femenino">Femenino</label>
+              </div>
+              <div class="opciones">
+                <input type="radio" id="no" formControlName="genero" value="Prefiero no decirlo" />
+                <label for="no">Prefiero no decirlo</label>
+              </div>
+              <small *ngIf="formularioCita.get('genero')?.invalid && formularioCita.get('genero')?.touched">
+                Selecciona un género.
+              </small>
+            </div>
+  
+            <div class="inter" [ngClass]="{'campo-invalido': !formularioCita.get('servicios')?.valid && formularioCita.get('servicios')?.touched}">
+              <label>Servicios Adicionales</label>
+              <div class="opciones">
+                <input type="checkbox" id="baño" [checked]="isChecked('Baño')" (change)="onCheckboxChange($event, 'Baño')" />
+                <label for="baño">Baño</label>
+              </div>
+              <div class="opciones">
+                <input type="checkbox" id="corte" [checked]="isChecked('Corte')" (change)="onCheckboxChange($event, 'Corte')" />
+                <label for="corte">Corte</label>
+              </div>
+              <div class="opciones">
+                <input type="checkbox" id="vacunas" [checked]="isChecked('Vacunas')" (change)="onCheckboxChange($event, 'Vacunas')" />
+                <label for="vacunas">Vacunas</label>
+              </div>
+              <small *ngIf="formularioCita.get('servicios')?.invalid && formularioCita.get('servicios')?.touched">
+                Selecciona al menos un servicio.
+              </small>
+            </div>
+          </div>
+
+          <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('motivo')?.valid && formularioCita.get('motivo')?.touched}">
+            <label for="motivo">Motivo de la Cita</label>
+            <select id="motivo" formControlName="motivo">
+              <option value="">Seleccione un motivo</option>
+              <option value="Consulta">Consulta</option>
+              <option value="Adopción">Adopción</option>
+              <option value="Vacunación">Vacunación</option>
+            </select>
+            <small *ngIf="formularioCita.get('motivo')?.invalid && formularioCita.get('motivo')?.touched">
+              Selecciona un motivo.
+            </small>
+          </div>
+
         </div>
         
         <div class="calendario">

@@ -50,10 +50,6 @@ export class NuestrosPerrosComponent implements OnInit {
 
   hacerCita(sel:string){
     this.seleccion = sel;
-    const element = document.getElementById('seccion-cita');
-    if(element){
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
   }
 
   recibirActu(actu: boolean){

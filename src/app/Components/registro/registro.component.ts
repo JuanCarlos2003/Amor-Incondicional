@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Animales } from '../../interfaces/animales';
 import { CalendarModule } from 'primeng/calendar';
-import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CitasComponent } from '../../citas/citas.component';
@@ -61,9 +61,12 @@ export class RegistroComponent {
     this.minuteInterval = 15;
 
     this.formularioCita = new FormGroup({
-      nombre: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      telefono: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      correo: new FormControl('', [Validators.required, Validators.email])
+      nombre: new FormControl('', [Validators.required, this.noSpecialCharsValidator, Validators.maxLength(50)]),
+      telefono: new FormControl('', [Validators.required, this.numberRangeValidator(1000000000, 9999999999), Validators.minLength(10)]),
+      correo: new FormControl('', [Validators.required, Validators.email]),
+      genero: new FormControl('', [Validators.required]),
+      servicios: new FormControl([]),
+      motivo: new FormControl('', [Validators.required])
     });
   }
 
@@ -131,7 +134,10 @@ export class RegistroComponent {
         telefonoIn: this.formularioCita.value.telefono,
         correoIn: this.formularioCita.value.correo,
         fechaCita: this.fechaLocal,
-        nombreAn: this.seleccion
+        nombreAn: this.seleccion,
+        genero: this.formularioCita.value.genero,
+        servicios: this.formularioCita.value.servicios,
+        motivo: this.formularioCita.value.motivo
       };
 
       const key = this.citaService.generarKey();
@@ -141,14 +147,53 @@ export class RegistroComponent {
         this.guardada = 2;
         this.cambio = !this.cambio;
         this.actualizacion.emit(this.cambio);
+
+        this.formularioCita.reset();
+        this.formularioCita.get('servicios')?.setValue([]);
       }).catch(() => {
         this.guardada = 3;
       });
-
-      this.formularioCita.reset();
     }).catch(() => {
       this.guardada = 3;
     });
   }
+
+  noSpecialCharsValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const valid = /^[a-zA-Z0-9 ]*$/.test(control.value);
+      return valid ? null : { 'noSpecialChars': true };
+    };
+  }
+
+  numberRangeValidator(min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = +control.value;
+      return value >= min && value <= max ? null : { 'numberRange': { min, max } };
+    };
+  }
+
+  onCheckboxChange(event: any, servicio: string) {
+    const servicios: FormControl = this.formularioCita.get('servicios') as FormControl;
+    const serviciosArray = servicios.value ? [...servicios.value] : [];
+    
+    if (event.target.checked) {
+      if (!serviciosArray.includes(servicio)) {
+        serviciosArray.push(servicio);
+      }
+    } else {
+      const index = serviciosArray.indexOf(servicio);
+      if (index > -1) {
+        serviciosArray.splice(index, 1);
+      }
+    }
+    
+    servicios.setValue(serviciosArray);
+    servicios.updateValueAndValidity();
+  }
+  
+  isChecked(servicio: string): boolean {
+    const servicios: FormControl = this.formularioCita.get('servicios') as FormControl;
+    return servicios.value && servicios.value.includes(servicio);
+  }  
   
 }
