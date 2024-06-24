@@ -15,13 +15,15 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    z-index: 999;
 }
 
 img {
     width: 144px;
     height: 144px;
     border-radius: 50%;
+    border: 3px solid #74502b;
 }
 
 a {
@@ -41,19 +43,9 @@ a {
 }
 
 a.logo {
-    height: 150px;
-    border-radius: 50%;
-    width: 150px;
-    border: 3px solid #74502b;
-    display: inline-block;
     padding: 0;
-    position: absolute;
-    top: 0; 
-    left: 50%; 
-    transform: translateX(-50%);
+    padding-top: 40px;
 }
-
-a.logo-fake {width: 150px;}
 
 .active{
     font-weight: bold;
@@ -74,8 +66,9 @@ input {
 
 
 @media screen and (max-width: 1500px){
-    a {width: 205px; padding: 20px 10px;}
-    a.a-logo-fake {width: 150px;}
+    a {padding: 20px 10px;}
+    a.logo {padding: 0;margin: 5px;}
+    nav{height: auto ; padding: 0;}
     a.a-search {width: 205px; padding:20px 0;}
     input {width: 180px;}
 }
