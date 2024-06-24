@@ -35,7 +35,8 @@ a {
     font-size: 18px;
     padding: 20px 20px;
     justify-content: space-around;
-    width: 250px;
+    /* width: 250px; */
+    width: 16%;
     text-align: center;
     text-decoration: none;
     color: #654321;
@@ -45,6 +46,7 @@ a {
 a.logo {
     padding: 0;
     padding-top: 40px;
+    width: 20%;
 }
 
 .active{
@@ -64,14 +66,24 @@ input {
     height: 35px;
 }
 
-
-@media screen and (max-width: 1500px){
-    a {padding: 20px 10px;}
-    a.logo {padding: 0;margin: 5px;}
-    nav{height: auto ; padding: 0;}
-    a.a-search {width: 205px; padding:20px 0;}
-    input {width: 180px;}
+@media screen and (max-width: 1700px) {
+    a { padding: 10px 7px; font-size: 15px;}
+    h6#bienvenida { font-size: 15px; }
+    input { width: 180px; }
 }
+
+@media screen and (max-width: 1275px) {
+    a { padding: 10px 5px; font-size: 14px; text-align: right; }
+    a.logo { padding: 0; margin: 5px; }
+    nav { height: auto; padding: 0; }
+    a.a-search { width: 200px; padding: 20px 0; }
+}
+
+@media screen and (max-width: 1200px) {
+    a { width: 200px; }
+    a.logo { width: 200px; }
+}
+
 
 #usuarios{
     /* border: 1px solid red; */
