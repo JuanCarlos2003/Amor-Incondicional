@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'busqueda', component: BusquedaComponent },
   { path: 'login', component: LoginComponent},
   { path: 'registrarme', component: RegisterComponent},
+  { path: 'busqueda/:term', component: BusquedaComponent },
   { path: 'admin', component: AdminComponent}
 ];
 
