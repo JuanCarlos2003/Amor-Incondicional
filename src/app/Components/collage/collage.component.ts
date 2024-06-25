@@ -29,4 +29,6 @@ export class CollageComponent {
       this.service.speak(contenidoString);
     }
   }
+
+  
 }

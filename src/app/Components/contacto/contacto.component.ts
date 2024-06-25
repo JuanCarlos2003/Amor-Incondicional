@@ -7,6 +7,7 @@ import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/a
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { AccessibilityServiceService } from '../../services/accessibility-service.service';
 
 @Component({
   selector: 'app-contacto',
@@ -35,7 +36,7 @@ export class ContactoComponent {
   horarioDeAtencion: string[] = ["Lunes a Viernes: 9:00 AM - 5:00 PM", "Sábados: 9:00 AM - 1:00 PM", "Domingos: Cerrado"];
   name: string = "";
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService,private service: AccessibilityServiceService) {}
 
     confirm() {
         if (this.nombreForm != "" && this.correoForm != "" && this.msgForm != "" && this.apellidoForm != "") {
@@ -58,5 +59,26 @@ export class ContactoComponent {
           this.messageService.add({ severity: 'warn', summary: 'Por favor, complete todos los campos del formulario antes de enviar.', detail: 'Todos los campos son obligatorios para poder procesar su solicitud correctamente.', life: 3000 });
         }
     }
+
+
+    isSpeakingEnabled: boolean = false;
+  
+  
+
+  content(event: MouseEvent) {
+    this.isSpeakingEnabled = this.service.getIsSpeakingEnable();
+    const element = event.target as HTMLElement;
+    let contenido: string[] = [];
+    if (element.textContent != null) {
+      contenido = element.textContent.split(' ');
+    } else {
+      contenido = [""];
+    }
+    const contenidoString = contenido.join(' ');
+    console.log(this.isSpeakingEnabled);
+    if (this.isSpeakingEnabled) {
+      this.service.speak(contenidoString);
+    }
+  }
 }
  

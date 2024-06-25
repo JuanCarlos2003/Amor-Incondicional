@@ -8,13 +8,13 @@ export class AccessibilityServiceService {
   isContrastMode: boolean = false;
   language: string = 'es-ES'
   isSpeakingEnabled: boolean = false;
-
   constructor() {}
-
+  
   setIsSpeakingEnabled(s: boolean) {
     this.isSpeakingEnabled = s;
   }
 
+  
   getIsSpeakingEnable(){
     return this.isSpeakingEnabled;
   }

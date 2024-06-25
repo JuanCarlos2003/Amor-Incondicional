@@ -1,7 +1,6 @@
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { AccessibilityServiceService } from '../../services/accessibility-service.service';
-
 @Component({
   selector: 'app-colorcito',
   standalone: true,

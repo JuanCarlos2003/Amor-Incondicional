@@ -18,6 +18,7 @@ export class FooterComponent {
   ig: string = "Amor Incondicional";
   tt: string = "@TeamAmorIncondicional";
 
+
   isSpeakingEnabled: boolean = false;
   
   constructor(private service: AccessibilityServiceService) {}
@@ -37,5 +38,5 @@ export class FooterComponent {
       this.service.speak(contenidoString);
       return;
     }
+    }
   }
-}

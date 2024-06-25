@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { AccessibilityServiceService } from './services/accessibility-service.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
   providers: [
     provideClientHydration(),
     provideFirebaseApp(() => initializeApp({"projectId":"prueba2-4fcd3","appId":"1:933362159680:web:9691063426086eceed8fa5","storageBucket":"prueba2-4fcd3.appspot.com","apiKey":"AIzaSyD6RvNOzDlfPQPcKrckJ_PqBjA62Cg0_aM","authDomain":"prueba2-4fcd3.firebaseapp.com","messagingSenderId":"933362159680"})),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    AccessibilityServiceService
   ],
   bootstrap: [AppComponent]
 })

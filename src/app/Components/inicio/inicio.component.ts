@@ -17,5 +17,5 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
-
+ 
 }

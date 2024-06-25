@@ -7,6 +7,7 @@ import { Cita } from '../../interfaces/cita';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { AccessibilityServiceService } from '../../services/accessibility-service.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -46,7 +47,7 @@ export class BusquedaComponent implements OnInit, OnChanges {
     timeZone: 'America/Mexico_City'
   };
 
-  constructor(private route: ActivatedRoute){
+  constructor(private route: ActivatedRoute, private service: AccessibilityServiceService){
     this.actualizar = false;
     this.auxActu = false;
     this.siHay = false;
@@ -75,6 +76,26 @@ export class BusquedaComponent implements OnInit, OnChanges {
     if (citasGuardadas) {
       this.citas = JSON.parse(citasGuardadas);
       this.siHay = true;
+    }
+  }
+
+  isSpeakingEnabled: boolean = false;
+  
+
+
+  content(event: MouseEvent) {
+    this.isSpeakingEnabled = this.service.getIsSpeakingEnable();
+    const element = event.target as HTMLElement;
+    let contenido: string[] = [];
+    if (element.textContent != null) {
+      contenido = element.textContent.split(' ');
+    } else {
+      contenido = [""];
+    }
+    const contenidoString = contenido.join(' ');
+    console.log(this.isSpeakingEnabled);
+    if (this.isSpeakingEnabled) {
+      this.service.speak(contenidoString);
     }
   }
 }

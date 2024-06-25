@@ -12,11 +12,11 @@
         <a routerLink="/admin" routerLinkActive="active" class="a-fake2"  (mouseover)="content($event)">Administrar</a>
       }
       @if (authService.currentUserSig() && authService.currentUserSig()?.username!='Admin'){
-        <a routerLink="/mascotas" routerLinkActive="active">Registrar Cita</a>
+        <a routerLink="/mascotas" routerLinkActive="active" (mouseover)="content($event)">Registrar Cita</a>
       }
-      <a routerLink="/ayuda" routerLinkActive="active">¿Como Ayudar?</a>
-      <a routerLink="/about" routerLinkActive="active">Nosotros</a>
-      <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+      <a routerLink="/ayuda" routerLinkActive="active" (mouseover)="content($event)">¿Como Ayudar?</a>
+      <a routerLink="/about" routerLinkActive="active" (mouseover)="content($event)">Nosotros</a>
+      <a routerLink="/contacto" routerLinkActive="active" (mouseover)="content($event)">Contacto</a>
       <a class="a-search">
         <div id="usuarios">
           @if (authService.currentUserSig() == null) {
@@ -80,7 +80,7 @@
                   <div class="row text-center mt-3">
                       <div class="col-12">
                         <img class="imap im" src="../../../assets/imgGigi/lector.png" alt="" (click)="toggleSpeaking()">
-                        <p (click)="toggleSpeaking()"  class="fonticon"> {{ isSpeakingEnabled ? 'Lector de texto activado' : 'Lector de texto desactivado' }}</p>
+                        <p  (click)="toggleSpeaking()"  class="fonticon"> {{ isSpeakingEnabled ? 'Lector de texto activado' : 'Lector de texto desactivado' }}</p>
                         <img src="../../../assets/imgGigi/pause.png" alt="" class="iconitos " (click)="pauseReading()">
                         <img src="../../../assets/imgGigi/play.png" alt="" class="iconitos" (click)="resumeReading()">
                         <img src="../../../assets/imgGigi/stop.png" alt="" class="iconitos" (click)="stopReading()">
