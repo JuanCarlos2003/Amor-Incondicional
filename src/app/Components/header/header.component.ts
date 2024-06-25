@@ -70,7 +70,6 @@ export class HeaderComponent implements OnInit{
     const element = event.target as HTMLElement;
     let contenido: string[] = [];
     if (element.textContent != null) {
-      console.log("1");
       contenido = element.textContent.split(' ');
     } else {
       contenido = [""];

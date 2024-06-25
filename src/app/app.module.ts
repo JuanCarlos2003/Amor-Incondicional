@@ -47,8 +47,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   ],
   providers: [
     provideClientHydration(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp({"projectId":"prueba2-4fcd3","appId":"1:933362159680:web:9691063426086eceed8fa5","storageBucket":"prueba2-4fcd3.appspot.com","apiKey":"AIzaSyD6RvNOzDlfPQPcKrckJ_PqBjA62Cg0_aM","authDomain":"prueba2-4fcd3.firebaseapp.com","messagingSenderId":"933362159680"})),
     provideAuth(() => getAuth())
+
   ],
   bootstrap: [AppComponent]
 })
