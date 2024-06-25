@@ -7,7 +7,7 @@ import { RecursosEducativosComponent } from './Components/recursos-educativos/re
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { BusquedaComponent } from './Components/busqueda/busqueda.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component:  InicioComponent}, 
   { path: 'about', component: AboutUsComponent},
