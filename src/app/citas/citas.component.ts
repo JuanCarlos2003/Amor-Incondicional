@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { Cita } from '../interfaces/cita';
 import { CitaService } from '../services/cita.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-citas',
@@ -55,19 +56,46 @@ export class CitasComponent implements OnInit, OnChanges {
       ('0' + this.presente.getMinutes()).slice(-2);
   }
 
+  authService = inject(AuthService);
+
   ngOnInit(): void {
-    this.obtenerCitas();
+    this.authService.user$.subscribe(user => {
+      if(user){
+        this.authService.currentUserSig.set({
+          email: user.email!,
+          username: user.displayName!,
+        });
+        if((user.displayName!)==null){
+          this.authService.currentUserSig.set({
+            email: user.email!,
+            username: user.phoneNumber!,
+          });
+        }
+      }else{
+        this.authService.currentUserSig.set(null);
+      }
+      console.log(this.authService.currentUserSig());
+    });
+
+    const user = this.authService.currentUserSig()?.username;
+    if (user) {
+      this.obtenerCitas(user);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.actualizar !== this.auxActu) {
       this.auxActu = !this.auxActu;
-      this.obtenerCitas();
+      const user = this.authService.currentUserSig()?.username;
+      if (user) {
+        this.obtenerCitas(user);
+      }
     }
   }
 
-  obtenerCitas(): void {
-    this.citaService.getAll().subscribe({
+  obtenerCitas(username: string): void {
+    console.log('Obteniendo citas para el usuario:', username);
+    this.citaService.getCitasByUsuario(username).subscribe({
       next: (data: any) => {
         console.log('Citas received:', data);
         this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
@@ -79,4 +107,5 @@ export class CitasComponent implements OnInit, OnChanges {
       }
     });
   }
+  
 }

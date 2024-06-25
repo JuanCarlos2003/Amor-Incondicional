@@ -1,7 +1,7 @@
 export interface Cita {
     key?: string;
     nombreIn?: string;
-    telefonoIn?: number;
+    telefonoIn?: string;
     correoIn?: string;
     fechaCita?: any;
     nombreAn?: string;

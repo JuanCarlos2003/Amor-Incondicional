@@ -44,7 +44,7 @@
           </div>
           <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('telefono')?.valid && formularioCita.get('telefono')?.touched}">
             <label for="telefono">Teléfono del interesado</label>
-            <input pInputText id="telefono" formControlName="telefono" pKeyFilter="int" placeholder="4491234567" />
+            <input pInputText id="telefono" formControlName="telefono" placeholder="+52 333-333-33-33" />
             <small *ngIf="formularioCita.get('telefono')?.invalid && formularioCita.get('telefono')?.touched">
               Escribe un teléfono válido.
             </small>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cita } from '../interfaces/cita';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,13 @@ export class CitaService {
     return this.http.get<Cita[]>(this.apiUrl);
   }
 
-  getCitasByUsuario(correoIn: string): Observable<Cita[]> {
-    return this.http.get<Cita[]>(`${this.apiUrl}/usuario?correoIn=${correoIn}`);
+  getCitasByUsuario(nombreIn: string): Observable<Cita[]> {
+    console.log('Solicitando citas para el usuario:', nombreIn);
+    return this.http.get<Cita[]>(`${this.apiUrl}/usuario?nombreIn=${nombreIn}`).pipe(
+      tap(data => console.log('Datos recibidos del servidor:', data))
+    );
   }
+  
 
   getCitasEnRango(startDate: string, endDate: string): Observable<Cita[]> {
     return this.http.get<Cita[]>(`${this.apiUrl}/rango?startDate=${startDate}&endDate=${endDate}`);

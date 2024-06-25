@@ -27,7 +27,7 @@ export class RegistroComponent {
   maxHour: number = 18;
   minuteInterval: number = 15;
   nombre!: string;
-  telefono!: number;
+  telefono!: string;
   correo!: string;
   cita = {
     'width': '80%',
@@ -62,7 +62,7 @@ export class RegistroComponent {
 
     this.formularioCita = new FormGroup({
       nombre: new FormControl('', [Validators.required, this.noSpecialCharsValidator, Validators.maxLength(50)]),
-      telefono: new FormControl('', [Validators.required, this.numberRangeValidator(1000000000, 9999999999), Validators.minLength(10)]),
+      telefono: new FormControl('', [Validators.required, this.phoneValidator(), Validators.minLength(17)]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       genero: new FormControl('', [Validators.required]),
       servicios: new FormControl([]),
@@ -171,10 +171,11 @@ export class RegistroComponent {
     };
   }
 
-  numberRangeValidator(min: number, max: number): ValidatorFn {
+  phoneValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const value = +control.value;
-      return value >= min && value <= max ? null : { 'numberRange': { min, max } };
+      const value = control.value;
+      const phoneRegex = /^\+52 \d{3}-\d{3}-\d{2}-\d{2}$/;
+      return phoneRegex.test(value) ? null : { 'phoneFormat': { value } };
     };
   }
 

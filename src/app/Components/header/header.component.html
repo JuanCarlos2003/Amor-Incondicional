@@ -11,7 +11,9 @@
       @if (authService.currentUserSig()?.username=='Admin'){
         <a routerLink="/admin" routerLinkActive="active" class="a-fake2">Administrar</a>
       }
-      <a routerLink="/mascotas" routerLinkActive="active">Nuestras Mascotas</a> 
+      @if (authService.currentUserSig() && authService.currentUserSig()?.username!='Admin'){
+        <a routerLink="/mascotas" routerLinkActive="active">Registrar Cita</a>
+      }
       <a routerLink="/ayuda" routerLinkActive="active">¿Como Ayudar?</a>
       <a routerLink="/about" routerLinkActive="active">Nosotros</a>
       <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
