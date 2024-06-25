@@ -5,14 +5,13 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { Cita } from '../interfaces/cita';
 import { CitaService } from '../services/cita.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-citas',
   standalone: true,
   imports: [CommonModule, SelectButtonModule, FormsModule, TableModule],
   templateUrl: './citas.component.html',
-  styleUrl: './citas.component.css'
+  styleUrls: ['./citas.component.css']
 })
 export class CitasComponent implements OnInit, OnChanges {
   @Input() actualizar: boolean;
@@ -43,10 +42,11 @@ export class CitasComponent implements OnInit, OnChanges {
     timeZone: 'America/Mexico_City'
   };
 
-  constructor(private citaService: CitaService){
+  constructor(private citaService: CitaService) {
     this.actualizar = false;
     this.auxActu = false;
     this.siHay = false;
+    this.tiempo = 2;
 
     this.fechaActual = this.presente.getFullYear() + '-' + 
       ('0' + (this.presente.getMonth() + 1)).slice(-2) + '-' + 
@@ -60,22 +60,23 @@ export class CitasComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.actualizar != this.auxActu) {
+    if (this.actualizar !== this.auxActu) {
       this.auxActu = !this.auxActu;
       this.obtenerCitas();
     }
   }
 
   obtenerCitas(): void {
-    this.citaService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ clave: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe(data => {
-      this.citas = data;
-      this.siHay = true;
+    this.citaService.getAll().subscribe({
+      next: (data: any) => {
+        console.log('Citas received:', data);
+        this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
+        this.siHay = this.citas.length > 0;
+      },
+      error: (error) => {
+        console.error('Error al obtener las citas', error);
+        this.siHay = false;
+      }
     });
   }
 }

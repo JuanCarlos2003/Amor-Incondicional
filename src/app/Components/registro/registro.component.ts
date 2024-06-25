@@ -81,13 +81,13 @@ export class RegistroComponent {
     const selectedHour = selectedDate.getHours();
     const selectedMinute = selectedDate.getMinutes();
 
-    if(selectedDate.getMinutes() > 0 && selectedDate.getMinutes() <= 15){
+    if (selectedDate.getMinutes() > 0 && selectedDate.getMinutes() <= 15) {
       selectedDate.setMinutes(15);
-    } else if(selectedDate.getMinutes() > 15 && selectedDate.getMinutes() <= 30){
+    } else if (selectedDate.getMinutes() > 15 && selectedDate.getMinutes() <= 30) {
       selectedDate.setMinutes(30);
-    } else if(selectedDate.getMinutes() > 30 && selectedDate.getMinutes() <= 45){
+    } else if (selectedDate.getMinutes() > 30 && selectedDate.getMinutes() <= 45) {
       selectedDate.setMinutes(45);
-    } else if(selectedDate.getMinutes() > 45 && selectedDate.getMinutes() <= 59){
+    } else if (selectedDate.getMinutes() > 45 && selectedDate.getMinutes() <= 59) {
       selectedDate.setMinutes(0);
     }
 
@@ -124,37 +124,43 @@ export class RegistroComponent {
       ('0' + this.date.getHours()).slice(-2) + ':' +
       ('0' + this.date.getMinutes()).slice(-2);
     
-    this.citaService.verificarCitaExistente(this.fechaLocal).then((existe: boolean) => {
-      if (existe) {
+    this.citaService.verificarCitaExistente(this.fechaLocal).subscribe({
+      next: (response) => {
+        if (response.existe) {
+          this.guardada = 3;
+          return;
+        }
+        const nuevaCita: Cita = {
+          nombreIn: this.formularioCita.value.nombre,
+          telefonoIn: this.formularioCita.value.telefono,
+          correoIn: this.formularioCita.value.correo,
+          fechaCita: this.fechaLocal,
+          nombreAn: this.seleccion,
+          genero: this.formularioCita.value.genero,
+          servicios: this.formularioCita.value.servicios,
+          motivo: this.formularioCita.value.motivo
+        };
+
+        const key = this.citaService.generarKey();
+
+        this.citaService.create(nuevaCita, key).subscribe({
+          next: () => {
+            console.log('Nueva cita registrada');
+            this.guardada = 2;
+            this.cambio = !this.cambio;
+            this.actualizacion.emit(this.cambio);
+
+            this.formularioCita.reset();
+            this.formularioCita.get('servicios')?.setValue([]);
+          },
+          error: () => {
+            this.guardada = 3;
+          }
+        });
+      },
+      error: () => {
         this.guardada = 3;
-        return;
       }
-      const nuevaCita: Cita = {
-        nombreIn: this.formularioCita.value.nombre,
-        telefonoIn: this.formularioCita.value.telefono,
-        correoIn: this.formularioCita.value.correo,
-        fechaCita: this.fechaLocal,
-        nombreAn: this.seleccion,
-        genero: this.formularioCita.value.genero,
-        servicios: this.formularioCita.value.servicios,
-        motivo: this.formularioCita.value.motivo
-      };
-
-      const key = this.citaService.generarKey();
-
-      this.citaService.create(nuevaCita, key).then(() => {
-        console.log('Nueva cita registrada');
-        this.guardada = 2;
-        this.cambio = !this.cambio;
-        this.actualizacion.emit(this.cambio);
-
-        this.formularioCita.reset();
-        this.formularioCita.get('servicios')?.setValue([]);
-      }).catch(() => {
-        this.guardada = 3;
-      });
-    }).catch(() => {
-      this.guardada = 3;
     });
   }
 
@@ -195,5 +201,4 @@ export class RegistroComponent {
     const servicios: FormControl = this.formularioCita.get('servicios') as FormControl;
     return servicios.value && servicios.value.includes(servicio);
   }  
-  
 }

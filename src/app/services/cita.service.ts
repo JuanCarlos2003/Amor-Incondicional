@@ -1,38 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Cita } from '../interfaces/cita';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitaService {
 
-  private dbPath = '/citas';
+  private apiUrl = 'http://localhost:3000/citas';
 
-  citasRef: AngularFireList<Cita>;
+  constructor(private http: HttpClient) {}
 
-  constructor(private db: AngularFireDatabase) {
-    this.citasRef = db.list(this.dbPath);
+  getAll(): Observable<Cita[]> {
+    return this.http.get<Cita[]>(this.apiUrl);
   }
 
-  getAll(): AngularFireList<Cita> {
-    return this.citasRef;
+  getCitasByUsuario(correoIn: string): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/usuario?correoIn=${correoIn}`);
   }
 
-  create(cita: Cita, key: string): Promise<void> {
-    return this.citasRef.set(key, cita);
+  getCitasEnRango(startDate: string, endDate: string): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/rango?startDate=${startDate}&endDate=${endDate}`);
   }
 
-  update(key: string, value: any): Promise<void> {
-    return this.citasRef.update(key, value);
+  contarCitasPorDia(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/countPorDia`);
   }
 
-  delete(key: string): Promise<void> {
-    return this.citasRef.remove(key);
+  create(cita: Cita, key: string): Observable<void> {
+    return this.http.post<void>(this.apiUrl, { cita, key });
   }
 
-  deleteAll(): Promise<void> {
-    return this.citasRef.remove();
+  update(key: string, value: any): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/${key}`, value);
+  }
+
+  delete(key: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${key}`);
+  }
+
+  deleteAll(): Observable<void> {
+    return this.http.delete<void>(this.apiUrl);
   }
 
   generarAleatorio(length: number): string {
@@ -50,15 +60,8 @@ export class CitaService {
     return `${cadenaRandom}-${timestamp}`;
   }
 
-  verificarCitaExistente(fecha: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
-      this.citasRef.valueChanges().subscribe((citas: Cita[]) => {
-        const existe = citas.some(cita => cita.fechaCita === fecha);
-        resolve(existe);
-      }, error => {
-        reject(error);
-      });
-    });
+  verificarCitaExistente(fecha: string): Observable<{ existe: boolean }> {
+    return this.http.get<{ existe: boolean }>(`${this.apiUrl}/existe/${fecha}`);
   }
-  
+
 }
