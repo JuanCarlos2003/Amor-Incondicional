@@ -34,13 +34,13 @@
         <p class="adop"><a (mouseover)="content($event)" class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
         <br><br><hr>
         <span class="space"></span>
-        <p class="head">APADRINA</p>
+        <p class="head" (mouseover)="content($event)" >APADRINA</p>
         <p (mouseover)="content($event)">Puedes apadrinar alguno de nuestros peludos para que su estadía en nuestro refugio sea óptima. Manejamos
              diferentes planes de padrinos en los que puedes hacer un aporte mensual. Si estás interesado en apadrinar
               un Tepiano contáctanos y te daremos más detalles.
         </p>
         <br>
-        <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>APADRINA A UN PELUDITO</u></a> -></p>
+        <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u (mouseover)="content($event)" >APADRINA A UN PELUDITO</u></a> -></p>
         <br><br><hr>
     </div>
     <div class="tablatwo">
@@ -49,7 +49,7 @@
              puedes compartir tiempo con los peluditos, ayudarnos en la fundación o hacer donaciones en dinero.
         </p>
         <br>
-        <p (mouseover)="content($event)" class="adop"><a class="adop" routerLink="/ayuda" routerLinkActive="active"><u>HAZ TU DONACION</u></a> -></p>
+        <p  class="adop"><a class="adop" routerLink="/ayuda" routerLinkActive="active"><u (mouseover)="content($event)">HAZ TU DONACION</u></a> -></p>
         <br><br><hr>
         <br><br>
         <p (mouseover)="content($event)" class="head">DIFUNDE</p>

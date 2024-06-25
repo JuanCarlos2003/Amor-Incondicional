@@ -4,7 +4,7 @@
             <img src="assets/media/imagenes/cat.jpg" alt="Cat Image">
         </div>
         <div class="form-content">
-            <h2 class="tit">Regístrate para recibir nuestras noticias</h2>
+            <h2 class="tit" (mouseover)="content($event)">Regístrate para recibir nuestras noticias</h2>
             <form>
                 <div class="input-group">
                     <input class="holder" type="text" name="nombre" placeholder="Nombre" required>
@@ -15,7 +15,7 @@
                 <span class="space"></span>
                 <textarea class="holdertext" rows="4" cols="50" placeholder="Tu mensaje" required></textarea>
                 <span class="space"></span>
-                <input type="submit" class="boton-redondo si" value="ENVIAR">
+                <input type="submit" (mouseover)="content($event)" class="boton-redondo si" value="ENVIAR">
             </form>
         </div>
     </div>
