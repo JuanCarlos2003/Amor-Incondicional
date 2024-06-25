@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, IconFieldModule, InputIconModule, FormsModule],
+  imports: [RouterOutlet, RouterModule, IconFieldModule, InputIconModule, FormsModule, ButtonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
