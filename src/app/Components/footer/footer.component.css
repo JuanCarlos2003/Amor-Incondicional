@@ -1,11 +1,23 @@
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
+div.contenedor {
+    height: auto;
+    margin: 0;
+    background-color: #252527;
+    padding: 25px 15px 5px 15px;
+}
 
-* {font-family: Georgia, 'Times New Roman', Times, serif;}
+div.copy {
+    margin: auto;
+    text-align: center;
+    /* border-top: 2px solid #D2B48C; */
+}
 
-/* Nueva verion */
-div.contenedor {height: auto; margin: 0; background-color: #252527; padding: 25px 15px 5px 15px;}
-div.copy { margin: auto;text-align: center;border-top: 2px solid #D2B48C;}
-div.copy > p { 
+.border-right {border-right: 1px solid #D2B48C;}
+
+div.copy > p {
     font-size: 13px;
     margin: 0;
     font-weight: 500;
@@ -13,20 +25,90 @@ div.copy > p {
     text-align: center;
     padding: 3px 0;
 }
-i { color:#D2B48C; }
-div.contenido {margin-bottom: 20px;   }
-div.contenido > table {color: #D2B48C;border-collapse: collapse;}
-td.border-right {border-right: 1px solid #D2B48C;}
-table {margin: auto;}
-td, th{padding: 10px 50px;font-size: 13px;width: 350px;}
-td.contenido-top {vertical-align: top;}
-div.divisor {
+
+.copy {
+    border-top: 3px solid #D2B48C;
+}
+
+i {
+    color: #D2B48C;
+}
+
+div.contenido {
+    margin-bottom: 20px;
+    padding: 0 90px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 10px; */
+    color: #D2B48C;
+}
+
+@media screen and (max-width: 1200px) {
+    .border-right {border-right: 0;}
+
+    .grid-item { border-bottom: 1px solid #D2B48C; margin: 5px;}
+
+    .grid-item-img { border-bottom: 1px solid #D2B48C;  margin: 5px;}
+
+    div.contenido{
+        padding: 0;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-item {
+    padding: 10px;
+    font-size: 13px;
+    /* border: 1px solid #D2B48C; */
+}
+
+.grid-item-img  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 13px;
+    /* border: 1px solid #D2B48C; */
+}
+
+
+td-img img {
+    margin-bottom: 5px;
+}
+
+.contenido-top {
+    vertical-align: top;
+}
+
+.divisor {
     border-bottom: 2px solid #D2B48C;
     min-height: 5px;
     margin: 10px 0;
 }
-div.divisor-2 {min-height: 5px;margin-top: 5px;}
-p.titulo {margin: 5px 0 5px 0;text-transform: uppercase;font-size: 15px;}
+
+.divisor-2 {
+    min-height: 5px;
+    margin-top: 5px;
+}
+
+p.titulo {
+    margin: 5px 0 5px 0;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
 .texto {
     font-size: 14px;
     font-weight: 400;
@@ -35,42 +117,54 @@ p.titulo {margin: 5px 0 5px 0;text-transform: uppercase;font-size: 15px;}
     color: #D2B48C;
     padding: 5px 0;
 }
-.link-2 {text-decoration: none;}
-td > img {margin-bottom: 5px}
+
+.link-2 {
+    text-decoration: none;
+}
+
 i.y-border {
     height: 15px;
     width: 10%;
     border-bottom: 2px solid #D2B48C;
-    margin:15px 10px;    
+    margin: 15px 10px;
     color: #D2B48C;
 }
+
 p.p-t-f {
     display: flex;
     justify-content: space-between;
     align-items: center;
     vertical-align: middle;
 }
-i.no-border{height: 5px;}
-/* div.flechita > i {
-    margin: 0;
-    border: 1px solid red;
+
+i.no-border {
+    height: 5px;
 }
-div.flechita {
-    position: fixed;
-    right: 0;
-    padding: 0;
-    bottom: 0;
-    border: 1px solid turquoise;
-    height: 29px;
-    width: 29px;
-    margin: 10px;
-} */
+
 @media screen and (max-width: 1500px) {
-    p.titulo {margin: 5px 0 5px 0;text-transform: uppercase;font-size: 12px;}
-    .texto {font-size: 11px;}
-    i.y-border {height: 13px;}
-    td, th {padding: 10px 35px;}
-    td.td-img {padding: 10px 20px;width: 220px;}
-    p.p-t-f { width: 230px;}
-    div.copy > p {font-size: 10px;}
+    p.titulo {
+        margin: 5px 0 5px 0;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .texto {
+        font-size: 11px;
+    }
+
+    i.y-border {
+        height: 13px;
+    }
+
+    .grid-item {
+        padding: 10px 35px;
+    }
+
+    p.p-t-f {
+        width: 230px;
+    }
+
+    div.copy > p {
+        font-size: 10px;
+    }
 }
