@@ -5,18 +5,25 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../services/auth.service';
+import { AumentarComponent } from '../Accesibilidad/aumentar/aumentar.component';
+import { DisminuirComponent } from '../Accesibilidad/disminuir/disminuir.component';
+import { GrisesComponent } from '../Accesibilidad/grises/grises.component';
+import { ContrasteComponent } from '../Accesibilidad/contraste/contraste.component';
+import { AccessibilityServiceService } from '../../services/accessibility-service.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, IconFieldModule, InputIconModule, FormsModule, ButtonModule],
+  imports: [RouterOutlet, RouterModule, IconFieldModule, InputIconModule, FormsModule, AumentarComponent, DisminuirComponent, GrisesComponent, ContrasteComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
   searchTerm: string = '';
 
-  constructor(private router: Router) {}
+  isSpeakingEnabled: boolean = false;
+  
+  constructor(private router: Router, private service: AccessibilityServiceService) {}
 
   search() {
     const term = this.searchTerm.trim();
@@ -50,5 +57,36 @@ export class HeaderComponent implements OnInit{
 
   logout(): void {
     this.authService.logout();
+  }
+
+
+  toggleSpeaking() {
+    this.isSpeakingEnabled = !this.isSpeakingEnabled;
+  }
+
+  content(event: MouseEvent) {
+    const element = event.target as HTMLElement;
+    let contenido: string[] = [];
+    if (element.textContent != null) {
+      contenido = element.textContent.split(' ');
+    } else {
+      contenido = [""];
+    }
+    const contenidoString = contenido.join(' ');
+    if (this.isSpeakingEnabled) {
+      this.service.speak(contenidoString);
+    }
+  }
+
+  pauseReading() {
+    this.service.pause();
+  }
+
+  resumeReading() {
+    this.service.resume();
+  }
+
+  stopReading() {
+    this.service.stop();
   }
 }

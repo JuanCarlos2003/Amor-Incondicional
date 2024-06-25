@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl bg-body-tertiary">
   <div class="container-fluid">
-    <a class="logo" routerLink="/home" routerLinkActive="active"><img src="assets/media/logo-AI.jpg" alt="..."></a>
+    <a class="logo" routerLink="/home" routerLinkActive="active"><img class="imas" src="assets/media/logo-AI.jpg" alt="..."></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,7 @@
         <a class="a-fake2"></a>
       }
       @if (authService.currentUserSig()?.username=='Admin'){
-        <a routerLink="/admin" routerLinkActive="active" class="a-fake2">Administrar</a>
+        <a routerLink="/admin" routerLinkActive="active" class="a-fake2"  (mouseover)="content($event)">Administrar</a>
       }
       @if (authService.currentUserSig() && authService.currentUserSig()?.username!='Admin'){
         <a routerLink="/mascotas" routerLinkActive="active">Registrar Cita</a>
@@ -21,8 +21,8 @@
         <div id="usuarios">
           @if (authService.currentUserSig() == null) {
             <div id="boton">
-              <button id="login" type="button" class="btn btn-outline-secondary" routerLink="/login" routerLinkActive="active">Login</button>
-              <button type="button" class="btn btn-outline-secondary" routerLink="/registrarme" routerLinkActive="active">Sign in</button>
+              <button id="login" type="button" class="btn btn-outline-secondary" routerLink="/login" routerLinkActive="active"  (mouseover)="content($event)">Login</button>
+              <button type="button" class="btn btn-outline-secondary" routerLink="/registrarme" routerLinkActive="active"  (mouseover)="content($event)">Sign in</button>
             </div>
           }@else{
             <h6 id="bienvenida">Bienvenido, {{authService.currentUserSig()?.username}}</h6>
@@ -34,8 +34,61 @@
         </div>
       </a>
       @if (authService.currentUserSig()) {
-        <a><button id="login" type="button" class="btn btn-outline-secondary" (click)="logout()">Logout</button></a>
+        <a><button id="login" type="button" class="btn btn-outline-secondary" (click)="logout()"  (mouseover)="content($event)">Logout</button></a>
       }
     </div>
+
   </div>
-</nav>
+  <div class="icono-accesibilidad">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; background: none; padding: 0; cursor: pointer;">
+        <img src="../../../assets/imgGigi/uno.png" alt="Icono de Accesibilidad">
+    </button>
+  </div> 
+
+ </nav>
+ 
+ 
+ <!-- ACESIBILIDAD WEB -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+               <h5 class="modal-title fs-5" id="exampleModalLabel" (mouseover)="content($event)" class="accesibilidad" (mouseover)="content($event)"  (mouseover)="content($event)">Accesibilidad Web</h5> 
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                  <div class="row text-center">
+                      <div class="col-6">
+                        <app-disminuir></app-disminuir>
+                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)">Zoom out</p>
+                      </div>
+                      <div class="col-6">
+                        <app-aumentar></app-aumentar>
+                        <p (mouseover)="content($event) " class="fonticon" (mouseover)="content($event)">Zoom in</p>
+                      </div>
+                  </div>
+                  <div class="row text-center mt-3">
+                      <div class="col-6">
+                        <app-contraste></app-contraste>
+                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)">Invertir colores</p>
+                      </div>
+                      <div class="col-6">
+                        <app-grises></app-grises>
+                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)"> Escala de grises</p>
+                      </div>
+                  </div>
+                  <div class="row text-center mt-3">
+                      <div class="col-12">
+                        <img class="imap im" src="../../../assets/imgGigi/lector.png" alt="" (click)="toggleSpeaking()">
+                        <p (click)="toggleSpeaking()"  class="fonticon"> {{ isSpeakingEnabled ? 'Lector de texto activado' : 'Lector de texto desactivado' }}</p>
+                        <img src="../../../assets/imgGigi/pause.png" alt="" class="iconitos " (click)="pauseReading()">
+                        <img src="../../../assets/imgGigi/play.png" alt="" class="iconitos" (click)="resumeReading()">
+                        <img src="../../../assets/imgGigi/stop.png" alt="" class="iconitos" (click)="stopReading()">
+                      </div> -
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

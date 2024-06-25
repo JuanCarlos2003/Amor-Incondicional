@@ -43,7 +43,9 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+
+
   ],
   providers: [
     provideClientHydration(),
@@ -52,4 +54,6 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}
