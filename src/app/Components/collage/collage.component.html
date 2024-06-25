@@ -1,9 +1,9 @@
 <div class="first"> 
     <div class="small ">
-        <p class="name">Amor Incondicional</p>
-        <p class="three"> "¡Un hogar temporal con un amor eterno!" </p>
+        <p class="name" (mouseover)="content($event)">Amor Incondicional</p>
+        <p class="three" (mouseover)="content($event)"> "¡Un hogar temporal con un amor eterno!" </p>
         <div class="cont-bot">
-            <a class="boton-redondo" routerLink="/mascotas" routerLinkActive="active">ADOPTA UN AMIGO</a>
+            <a (mouseover)="content($event)" class="boton-redondo" routerLink="/mascotas" routerLinkActive="active">ADOPTA UN AMIGO</a>
         </div>
     </div>     
 </div> 

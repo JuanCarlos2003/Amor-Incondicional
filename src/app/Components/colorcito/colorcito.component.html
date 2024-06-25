@@ -1,10 +1,10 @@
-<div class="fin">
-    <h1>Apoya Nuestra Labor</h1>
-    <p class="finp">Puedes donar desde alimentos y medicinas hasta cobijas o tejas para la adecuación 
+<div  class="fin">
+    <h1 (mouseover)="content($event)">Apoya Nuestra Labor</h1>
+    <p (mouseover)="content($event)" class="finp">Puedes donar desde alimentos y medicinas hasta cobijas o tejas para la adecuación 
         del refugio. También puedes compartir tiempo con los peluditos, ayudarnos en la fundación o hacer donaciones en dinero.
     </p>
     <br>
-    <a class="boton-redondo si" routerLink="/ayuda" routerLinkActive="active">HAZ TU DONACIÓN AQUÍ</a>
+    <a (mouseover)="content($event)" class="boton-redondo si" routerLink="/ayuda" routerLinkActive="active">HAZ TU DONACIÓN AQUÍ</a>
 </div>
 <span class="space"></span>
 <router-outlet></router-outlet>

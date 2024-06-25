@@ -12,11 +12,11 @@
         <a routerLink="/admin" routerLinkActive="active" class="a-fake2"  (mouseover)="content($event)">Administrar</a>
       }
       @if (authService.currentUserSig() && authService.currentUserSig()?.username!='Admin'){
-        <a routerLink="/mascotas" routerLinkActive="active">Registrar Cita</a>
+        <a routerLink="/mascotas" routerLinkActive="active" (mouseover)="content($event)">Registrar Cita</a>
       }
-      <a routerLink="/ayuda" routerLinkActive="active">¿Como Ayudar?</a>
-      <a routerLink="/about" routerLinkActive="active">Nosotros</a>
-      <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+      <a routerLink="/ayuda" routerLinkActive="active" (mouseover)="content($event)">¿Como Ayudar?</a>
+      <a routerLink="/about" routerLinkActive="active" (mouseover)="content($event)">Nosotros</a>
+      <a routerLink="/contacto" routerLinkActive="active" (mouseover)="content($event)">Contacto</a>
       <a class="a-search">
         <div id="usuarios">
           @if (authService.currentUserSig() == null) {
@@ -47,13 +47,12 @@
 
  </nav>
  
- 
  <!-- ACESIBILIDAD WEB -->
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-               <h5 class="modal-title fs-5" id="exampleModalLabel" (mouseover)="content($event)" class="accesibilidad" (mouseover)="content($event)"  (mouseover)="content($event)">Accesibilidad Web</h5> 
+               <h5 class="modal-title fs-5" id="exampleModalLabel" (mouseover)="content($event)" class="accesibilidad">Accesibilidad Web</h5> 
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -61,27 +60,27 @@
                   <div class="row text-center">
                       <div class="col-6">
                         <app-disminuir></app-disminuir>
-                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)">Zoom out</p>
+                        <p (mouseover)="content($event)" class="fonticon" >Zoom out</p>
                       </div>
                       <div class="col-6">
                         <app-aumentar></app-aumentar>
-                        <p (mouseover)="content($event) " class="fonticon" (mouseover)="content($event)">Zoom in</p>
+                        <p (mouseover)="content($event)" class="fonticon">Zoom in</p>
                       </div>
                   </div>
                   <div class="row text-center mt-3">
                       <div class="col-6">
                         <app-contraste></app-contraste>
-                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)">Invertir colores</p>
+                        <p (mouseover)="content($event)" class="fonticon">Invertir colores</p>
                       </div>
                       <div class="col-6">
                         <app-grises></app-grises>
-                        <p (mouseover)="content($event)" class="fonticon" (mouseover)="content($event)"> Escala de grises</p>
+                        <p (mouseover)="content($event)" class="fonticon"> Escala de grises</p>
                       </div>
                   </div>
                   <div class="row text-center mt-3">
                       <div class="col-12">
                         <img class="imap im" src="../../../assets/imgGigi/lector.png" alt="" (click)="toggleSpeaking()">
-                        <p (click)="toggleSpeaking()"  class="fonticon"> {{ isSpeakingEnabled ? 'Lector de texto activado' : 'Lector de texto desactivado' }}</p>
+                        <p  (click)="toggleSpeaking()"  class="fonticon"> {{ isSpeakingEnabled ? 'Lector de texto activado' : 'Lector de texto desactivado' }}</p>
                         <img src="../../../assets/imgGigi/pause.png" alt="" class="iconitos " (click)="pauseReading()">
                         <img src="../../../assets/imgGigi/play.png" alt="" class="iconitos" (click)="resumeReading()">
                         <img src="../../../assets/imgGigi/stop.png" alt="" class="iconitos" (click)="stopReading()">

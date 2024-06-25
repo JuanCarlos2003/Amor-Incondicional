@@ -5,18 +5,18 @@
                 <img src="assets/media/logo-prim.jpg" alt="Amor Incondicional Logo">
             </div>
             <div class="grid-item contenido-top border-right">
-                <p class="titulo">Amor Incondicional</p>
-                <a class="texto" routerLink="/about" routerLinkActive="active">Nosotros </a>
+                <p (mouseover)="content($event)" class="titulo">Amor Incondicional</p>
+                <a (mouseover)="content($event)" class="texto" routerLink="/about" routerLinkActive="active">Nosotros </a>
                 <div class="divisor"></div>
-                <p class="titulo">Contáctanos</p>
-                <a class="texto" routerLink="/contacto" routerLinkActive="active">Escríbenos</a>
+                <p (mouseover)="content($event)" class="titulo">Contáctanos</p>
+                <a (mouseover)="content($event)" class="texto" routerLink="/contacto" routerLinkActive="active">Escríbenos</a>
                 <div class="divisor"></div>
-                <p class="titulo">¡Adopta ahora!</p>
-                <a class="texto" routerLink="/mascotas" routerLinkActive="active">Adopta</a><br>
-                <a class="texto" routerLink="/ayuda" routerLinkActive="active">Ayuda al refugio</a>
+                <p (mouseover)="content($event)" class="titulo">¡Adopta ahora!</p>
+                <a (mouseover)="content($event)" class="texto" routerLink="/mascotas" routerLinkActive="active">Adopta</a><br>
+                <a (mouseover)="content($event)" class="texto" routerLink="/ayuda" routerLinkActive="active">Ayuda al refugio</a>
             </div>
             <div class="grid-item contenido-top border-right">
-                <p class="titulo">Nuestras Redes Sociales</p>
+                <p (mouseover)="content($event)" class="titulo">Nuestras Redes Sociales</p>
                 <div class="divisor-2"></div>
                 <a class="texto text-center link-2" href="https://www.facebook.com/yourpage"><i class="fa-brands fa-facebook-f fa-lg link-2 y-border"></i>{{face}}</a><br>
                 <a class="texto text-center link-2" href="https://twitter.com/yourpage"><i class="fa-brands fa-x-twitter fa-lg link-2 y-border"></i>{{x}}</a><br>
@@ -24,23 +24,23 @@
                 <a class="texto text-center link-2" href="https://www.instagram.com/yourpage"><i class="fa-brands fa-instagram fa-lg link-2 y-border"></i>{{ig}}</a><br>
             </div>
             <div class="grid-item contenido-top">
-                <p class="titulo">Desarrolladores</p>
-                <p class="texto p-t-f"><span>César Reyes Barrientos</span><i class="fa-solid fa-star fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Giselle Vargas Alvarado</span><i class="fa-solid fa-cat fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Sioamara Saénz Reyes</span><i class="fa-solid fa-otter fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Fabian Reyes Medina</span><i class="fa-brands fa-python fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Juan Carlos Morales Chavez</span><i class="fa-solid fa-music fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Emilio Josue de Luna Monreal</span><i class="fa-solid fa-car-side fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Carlos Adrian Marquez Carrillo</span><i class="fa-brands fa-spotify fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Lesley Naomy Escalera Moreno</span><i class="fa-solid fa-horse fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Francisco Jose Guerrero Jimenez</span><i class="fa-solid fa-gamepad fa-lg no-border"></i></p>
-                <p class="texto p-t-f"><span>Sara Yatzil Carrillo Diaz</span><i class="fa-solid fa-mug-hot fa-lg no-border"></i></p>
+                <p (mouseover)="content($event)" class="titulo">Desarrolladores</p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">César Reyes Barrientos</span><i class="fa-solid fa-star fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Giselle Vargas Alvarado</span><i class="fa-solid fa-cat fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Sioamara Saénz Reyes</span><i class="fa-solid fa-otter fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Fabian Reyes Medina</span><i class="fa-brands fa-python fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Juan Carlos Morales Chavez</span><i class="fa-solid fa-music fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Emilio Josue de Luna Monreal</span><i class="fa-solid fa-car-side fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Carlos Adrian Marquez Carrillo</span><i class="fa-brands fa-spotify fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Lesley Naomy Escalera Moreno</span><i class="fa-solid fa-horse fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Francisco Jose Guerrero Jimenez</span><i class="fa-solid fa-gamepad fa-lg no-border"></i></p>
+                <p class="texto p-t-f"><span (mouseover)="content($event)">Sara Yatzil Carrillo Diaz</span><i class="fa-solid fa-mug-hot fa-lg no-border"></i></p>
             </div>
         </div>
     </div>
     <div class="copy">
-        <p>© 2024 Amor incondicional. Todos los derechos reservados.</p>
-        <p>Esta página es solo un proyecto estudiantil. ¡Gracias por visitarnos!</p>
+        <p (mouseover)="content($event)">© 2024 Amor incondicional. Todos los derechos reservados.</p>
+        <p (mouseover)="content($event)">Esta página es solo un proyecto estudiantil. ¡Gracias por visitarnos!</p>
     </div>
 </div>
 
