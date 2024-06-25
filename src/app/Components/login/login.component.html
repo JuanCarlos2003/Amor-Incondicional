@@ -1,0 +1,63 @@
+@if (errorMessage) {
+    <div>{{ errorMessage }}</div>
+  }
+  <br>
+  <button type="button" routerLink="/home" routerLinkActive="active" class="pushable" style="margin-left: 10px;">
+    <span class="shadow"></span>
+    <span class="edge"></span>
+    <span class="front">
+      Volver
+    </span>
+  </button>
+  <div id="form">
+    <h1>Login</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="exampleFormControlInput1" class="form-label"><b>Email</b></label>
+        <input type="text" placeholder="correo@gmail.com" required formControlName="email" class="form-control" />
+        @if (this.form.get('email')?.errors?.['required']) {
+          <span>(El mail no puede quedar vacío)</span>
+        }
+        @if (this.form.get('email')?.errors?.['email']) {
+          <span>(El mail no es válido)</span>
+        }
+      </div>
+      <br>
+      <div>
+        <label for="exampleFormControlInput1" class="form-label"><b>Contraseña</b></label>
+        <input type="password" placeholder="*********" formControlName="password" required class="form-control" />
+        @if (this.form.get('password')?.errors?.['required']) {
+          <span>(La contraseña no puede quedar vacía)</span>
+        }
+      </div>
+      <br>
+      <div>
+        <button type="submit" class="pushable">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front">
+            Iniciar sesión
+          </span>
+        </button>
+      </div>
+      <div>
+        <small>{{resultado}}</small>
+      </div>
+    </form>
+  
+    <div class="content__or-text">
+      <span></span>
+      <span style="font-size: 15px; font-weight: bold;">OR</span>
+      <span></span>
+    </div>
+  
+    <br>
+    
+    <div id="google">
+      <button class="boton" (click)="loginWithGoogle()">
+        <svg width="30" height="30" fill="#7A67BE" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
+          <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+        </svg>
+      </button>
+    </div>
+  </div>

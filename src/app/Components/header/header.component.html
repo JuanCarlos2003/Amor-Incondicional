@@ -5,21 +5,35 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="a-fake2"></a>
+      @if (authService.currentUserSig() == null || authService.currentUserSig()?.username!='Admin') {
+        <a class="a-fake2"></a>
+      }
+      @if (authService.currentUserSig()?.username=='Admin'){
+        <a routerLink="/admin" routerLinkActive="active" class="a-fake2">Administrar</a>
+      }
       <a routerLink="/mascotas" routerLinkActive="active">Nuestras Mascotas</a> 
       <a routerLink="/ayuda" routerLinkActive="active">¿Como Ayudar?</a>
       <a routerLink="/about" routerLinkActive="active">Nosotros</a>
       <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
       <a class="a-search">
         <div id="usuarios">
-          <p-button icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info " />
-          <!-- <h6 id="bienvenida">Bienvenido, Pacotits</h6> -->
+          @if (authService.currentUserSig() == null) {
+            <div id="boton">
+              <button id="login" type="button" class="btn btn-outline-secondary" routerLink="/login" routerLinkActive="active">Login</button>
+              <button type="button" class="btn btn-outline-secondary" routerLink="/registrarme" routerLinkActive="active">Sign in</button>
+            </div>
+          }@else{
+            <h6 id="bienvenida">Bienvenido, {{authService.currentUserSig()?.username}}</h6>
+          }
           <p-iconField iconPosition="right">
             <p-inputIcon styleClass="pi pi-search" (click)="search()" />
             <input type="text" pInputText placeholder="Search" (keydown.enter)="search()" [(ngModel)]="searchTerm" />
           </p-iconField>
         </div>
       </a>
+      @if (authService.currentUserSig()) {
+        <button id="login" type="button" class="btn btn-outline-secondary" (click)="logout()">Logout</button>
+      }
     </div>
   </div>
 </nav>

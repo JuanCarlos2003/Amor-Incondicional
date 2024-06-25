@@ -98,3 +98,11 @@ input {
     text-decoration: none;
     color: #654321;
 }
+
+#boton{
+    margin-bottom: 6px;
+}
+
+button#login{
+    margin-right: 6px;
+}
