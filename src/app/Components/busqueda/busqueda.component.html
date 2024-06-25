@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div [ngClass]="{'tablas': true, 'no-tablas': false}">
     <div class="op">
-        <h2>Citas Registradas</h2>
+        <h2 >Citas Registradas</h2>
 
         <p-selectButton 
         [options]="stateOptions" 
@@ -14,7 +14,7 @@
         <p-table [value]="citas" styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem'}">
             <ng-template pTemplate="header">
                 <tr [ngClass]="{'encabezado': true}">
-                    <th>Interesado</th>
+                    <th >Interesado</th>
                     <th>Teléfono</th>
                     <th>Correo</th>
                     <th>Fecha de visita</th>
@@ -51,7 +51,7 @@
     }
     @else {
         <div class="no-hay">
-            <h4>No hay citas registradas</h4>
+            <h4 >No hay citas registradas</h4>
         </div>
     }
 </div>
