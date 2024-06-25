@@ -1,101 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { TableModule } from 'primeng/table';
-import { Cita } from '../../interfaces/cita';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { AccessibilityServiceService } from '../../services/accessibility-service.service';
 
 @Component({
   selector: 'app-busqueda',
   standalone: true,
-  imports: [CommonModule, SelectButtonModule, FormsModule, TableModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   templateUrl: './busqueda.component.html',
-  styleUrl: './busqueda.component.css'
+  styleUrls: ['./busqueda.component.css']
 })
-export class BusquedaComponent implements OnInit, OnChanges {
-  @Input() actualizar: boolean;
-
+export class BusquedaComponent implements OnInit {
   term: string = '';
 
-  auxActu: boolean;
-
-  tiempo: any;
-
-  stateOptions = [
-    { label: 'Anteriores', value: 1 },
-    { label: 'Próximas', value: 2 }
-  ];
-
-  citas: Cita[] = [];
-
-  siHay: boolean;
-
-  presente: Date = new Date();
-  fechaActual!: string;
-
-  opciones: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    timeZone: 'America/Mexico_City'
-  };
-
-  constructor(private route: ActivatedRoute, private service: AccessibilityServiceService){
-    this.actualizar = false;
-    this.auxActu = false;
-    this.siHay = false;
-
-    this.fechaActual = this.presente.getFullYear() + '-' + 
-      ('0' + (this.presente.getMonth() + 1)).slice(-2) + '-' + 
-      ('0' + this.presente.getDate()).slice(-2) + ' ' + 
-      ('0' + this.presente.getHours()).slice(-2) + ':' + 
-      ('0' + this.presente.getMinutes()).slice(-2);
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.obtenerCitas();
-    this.term = this.route.snapshot.paramMap.get('term') || '';
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.actualizar != this.auxActu) {
-      this.auxActu = !this.auxActu;
-      this.obtenerCitas();
-    }
-  }
-
-  obtenerCitas(): void {
-    const citasGuardadas = localStorage.getItem('citas');
-    if (citasGuardadas) {
-      this.citas = JSON.parse(citasGuardadas);
-      this.siHay = true;
-    }
-  }
-
-  isSpeakingEnabled: boolean = false;
-  
-
-
-  content(event: MouseEvent) {
-    this.isSpeakingEnabled = this.service.getIsSpeakingEnable();
-    const element = event.target as HTMLElement;
-    let contenido: string[] = [];
-    if (element.textContent != null) {
-      contenido = element.textContent.split(' ');
-    } else {
-      contenido = [""];
-    }
-    const contenidoString = contenido.join(' ');
-    console.log(this.isSpeakingEnabled);
-    if (this.isSpeakingEnabled) {
-      this.service.speak(contenidoString);
-    }
+    this.term = this.route.snapshot.paramMap.get('term')?.replace('-', ' ') || '';
   }
 }

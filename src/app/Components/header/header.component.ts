@@ -29,7 +29,8 @@ export class HeaderComponent implements OnInit{
     const term = this.searchTerm.trim();
 
     if (term) {
-      this.router.navigate(['/busqueda', { term: term }]);
+      const formattedTerm = term.split(' ').join('-').toLowerCase();
+      this.router.navigate([`${formattedTerm}`]);
     }
   }
 
