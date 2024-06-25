@@ -6,6 +6,9 @@ import { NuestrosPerrosComponent } from './Components/nuestros-perros/nuestros-p
 import { RecursosEducativosComponent } from './Components/recursos-educativos/recursos-educativos.component';
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { BusquedaComponent } from './Components/busqueda/busqueda.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { AdminComponent } from './Components/admin/admin.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +18,9 @@ export const routes: Routes = [
   { path: 'mascotas', component: NuestrosPerrosComponent}, 
   { path: 'contacto', component: ContactoComponent },
   { path: 'busqueda', component: BusquedaComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'registrarme', component: RegisterComponent},
+  { path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
