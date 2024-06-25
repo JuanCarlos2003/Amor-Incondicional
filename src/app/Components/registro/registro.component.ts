@@ -62,7 +62,7 @@ export class RegistroComponent {
 
     this.formularioCita = new FormGroup({
       nombre: new FormControl('', [Validators.required, this.noSpecialCharsValidator, Validators.maxLength(50)]),
-      telefono: new FormControl('', [Validators.required, this.phoneValidator(), Validators.minLength(17)]),
+      telefono: new FormControl('', [Validators.required, this.phoneValidator(), Validators.minLength(13)]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       genero: new FormControl('', [Validators.required]),
       servicios: new FormControl([]),
@@ -174,7 +174,7 @@ export class RegistroComponent {
   phoneValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const value = control.value;
-      const phoneRegex = /^\+52 \d{3}-\d{3}-\d{2}-\d{2}$/;
+      const phoneRegex = /^\+52\d{3}\d{3}\d{2}\d{2}$/;
       return phoneRegex.test(value) ? null : { 'phoneFormat': { value } };
     };
   }

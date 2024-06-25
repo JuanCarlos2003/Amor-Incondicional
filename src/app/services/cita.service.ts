@@ -23,7 +23,13 @@ export class CitaService {
       tap(data => console.log('Datos recibidos del servidor:', data))
     );
   }
-  
+
+  getCitasByTel(telefonoIn: string): Observable<Cita[]> {
+    console.log('Solicitando citas para el usuario:', telefonoIn);
+    return this.http.get<Cita[]>(`${this.apiUrl}/telefono?telefonoIn=${telefonoIn}`).pipe(
+      tap(data => console.log('Datos recibidos del servidor:', data))
+    );
+  }
 
   getCitasEnRango(startDate: string, endDate: string): Observable<Cita[]> {
     return this.http.get<Cita[]>(`${this.apiUrl}/rango?startDate=${startDate}&endDate=${endDate}`);

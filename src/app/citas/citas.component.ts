@@ -29,6 +29,7 @@ export class CitasComponent implements OnInit, OnChanges {
   citas: Cita[] = [];
 
   siHay: boolean;
+  telphone: boolean;
 
   presente: Date = new Date();
   fechaActual!: string;
@@ -47,6 +48,7 @@ export class CitasComponent implements OnInit, OnChanges {
     this.actualizar = false;
     this.auxActu = false;
     this.siHay = false;
+    this.telphone = false;
     this.tiempo = 2;
 
     this.fechaActual = this.presente.getFullYear() + '-' + 
@@ -66,6 +68,7 @@ export class CitasComponent implements OnInit, OnChanges {
           username: user.displayName!,
         });
         if((user.displayName!)==null){
+          this.telphone = true;
           this.authService.currentUserSig.set({
             email: user.email!,
             username: user.phoneNumber!,
@@ -95,17 +98,31 @@ export class CitasComponent implements OnInit, OnChanges {
 
   obtenerCitas(username: string): void {
     console.log('Obteniendo citas para el usuario:', username);
-    this.citaService.getCitasByUsuario(username).subscribe({
-      next: (data: any) => {
-        console.log('Citas received:', data);
-        this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
-        this.siHay = this.citas.length > 0;
-      },
-      error: (error) => {
-        console.error('Error al obtener las citas', error);
-        this.siHay = false;
-      }
-    });
+    if(this.telphone == true){
+      this.citaService.getCitasByTel(username).subscribe({
+        next: (data: any) => {
+          console.log('Citas received:', data);
+          this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
+          this.siHay = this.citas.length > 0;
+        },
+        error: (error) => {
+          console.error('Error al obtener las citas', error);
+          this.siHay = false;
+        }
+      });
+    } else{
+      this.citaService.getCitasByUsuario(username).subscribe({
+        next: (data: any) => {
+          console.log('Citas received:', data);
+          this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
+          this.siHay = this.citas.length > 0;
+        },
+        error: (error) => {
+          console.error('Error al obtener las citas', error);
+          this.siHay = false;
+        }
+      });
+    }
   }
   
 }
