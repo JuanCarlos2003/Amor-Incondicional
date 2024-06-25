@@ -1,38 +1,46 @@
 .fin{
-    padding-top: 70px;
-    background: #8D7366;
-    padding-bottom: 70px;
-    text-align: center;
-    font-family: 'Libre Baskerville', serif;
-    padding-left: 50px;
-    padding-right: 50px;
-    color: white;
+  padding-top: 70px;
+  background: #8D7366;
+  padding-bottom: 70px;
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
 }
+
 .finp{
-    font-size: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 .boton-redondo {
-    display: inline-block;
-    padding: 5px 20px;
-    background-color:#F2BC8E ;
-    color: white;
-    border-radius: 50px;
-    border: none;
-    text-align: center;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.10s ease;
-    text-decoration: none; 
-    
-  }
+  display: inline-block;
+  padding: 5px 20px;
+  background-color:#F2BC8E ;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.10s ease;
+  text-decoration: none;  
+}
  
-  .boton-redondo:hover {
-   
-    background-color: rgb(191, 157, 136);
-    letter-spacing: 10px;
+.boton-redondo:hover { 
+  background-color: rgb(191, 157, 136);
+  letter-spacing: 10px;
+}
+
+.space{
+  display: block; 
+  height: 70px; 
+}
+
+@media screen and (max-width: 801px) {
+  .finp {
+    font-size: 18px;
+    margin-top: 10px;
   }
-  .space{
-    display: block; 
-    height: 70px; 
-  }
+}

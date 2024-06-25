@@ -1,35 +1,71 @@
-
-.tit{
+.tit {
     font-weight: bolder;
 }
-.right{
-    text-align: left;
-    padding-left: 30px;
-}
-.out{
-    padding-left: 200px;
-    padding-right: 200px;
-    padding-top: 50px;
+
+.out {
+    padding: 50px 200px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(95, 94, 94);
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
-/* th,td{
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-} */
-img{
-    width: 540px;
+
+.image-container {
+    flex: 1 1 auto;
+}
+
+.image-container img {
+    width: 100%;
     height: auto;
+}
+
+.form-content {
+    flex: 1 1 540px;
+    text-align: left;
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.holder, .holdermail, .holdertext {
+    width: 100%;
+    padding: 10px 20px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.holder {
+    flex: 1 1 48%;
+}
+
+.holdermail, .holdertext {
+    flex: 1 1 100%;
+}
+
+.space {
+    display: block;
+    height: 35px;
+}
+
+.spacedown {
+    display: block;
+    height: 70px;
 }
 
 .boton-redondo {
     display: inline-block;
-    padding: 5px 20px;
+    padding: 10px 20px;
     background-color: rgb(191, 157, 136);
     color: white;
     border-radius: 50px;
@@ -38,55 +74,60 @@ img{
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.10s ease;
-    text-decoration: none; 
-    
-  }
- 
-  .boton-redondo:hover {
-    background-color:rgb(141, 114, 102);
-    letter-spacing: 10px;
-  }
-  .cont-bot{
-    text-align: left; 
-    margin-top: 50px;
-  }
+    text-decoration: none;
+    width: 100%;
+}
 
-.holder{
-    width: 250px;
-    height: 35px;
-    padding-left: 20px;
+.boton-redondo:hover {
+    background-color: rgb(141, 114, 102);
+    letter-spacing: 1px;
+}
 
-    color: #333;   
-    border: 1px solid #ccc;
-    border-radius: 4px;
+@media screen and (max-width: 1200px) {
+    .out {
+        padding: 50px 100px;
+    }
 }
-.holdermail{
-    width: 540px;
-    height: 35px;
-    padding-left: 20px;
 
-    color: #333;  
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.holdertext{
-    width: 540px;
-    padding-left: 20px;
-    padding-top: 12px;
+@media screen and (max-width: 768px) {
+    .out {
+        padding: 50px;
+    }
 
-    color: #333;  
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    
+    .form-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .form-content {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .holder, .holdermail, .holdertext, .boton-redondo {
+        width: 100%;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
-.spacer {
-    margin-right: 40px; 
-}
-.space {
-    display: block; 
-    height: 35px; 
-}
-.spacedown{
-    display: block; 
-    height: 70px; 
+
+@media screen and (max-width: 576px) {
+    .out {
+        padding: 20px;
+    }
+
+    .tit {
+        font-size: 24px;
+    }
+
+    .holder {
+        flex: 1 1 100%;
+    }
+
+    .boton-redondo {
+        font-size: 18px;
+    }
 }

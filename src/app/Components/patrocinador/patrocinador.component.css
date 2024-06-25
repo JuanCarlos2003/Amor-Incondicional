@@ -1,8 +1,7 @@
 
-@font-face {
+/* @font-face {
   font-family: 'elegante';
   src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf') format('truetype');
-  /* ../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf */
 }
 .popcon{
     text-align: center;
@@ -108,4 +107,64 @@
 .space{
   display: block; 
   height: 70px; 
+} */
+
+
+@font-face {
+  font-family: 'elegante';
+  src: url('../../../assets/media/Lobster_Two/LobsterTwo-Regular.ttf') format('truetype');
+}
+
+.popcon {
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 40px;
+  font-weight: bold;
+  padding-top: 60px;
+  font-family: elegante;
+  color: #8D7366;
+}
+
+.icon-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.5), 5px 0 5px -5px rgba(0, 0, 0, 0.5), 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+  padding: 10px 70px;
+  margin: 50px 200px;
+}
+
+.icon {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.icon img {
+  width: 180px;
+  height: auto;
+}
+
+.icon:nth-child(n+7) {
+  margin-top: 28px;
+}
+
+/* Ajuste para 2 columnas */
+@media screen and (max-width: 1200px) {
+  .icon-container {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 30px;
+  }
+}
+
+/* Ajuste para 1 columna */
+@media screen and (max-width: 768px) {
+  .icon-container {
+    grid-template-columns: 1fr;
+    margin: 30px;
+  }
+}
+
+.space {
+  display: block;
+  height: 70px;
 }

@@ -1,67 +1,65 @@
 <div class="relleno">
     <p class="rell">Adopta. Apadrina. Dona. Comparte. Involucrate.</p>
     <br>
-    <p class="relle">Tu Amigo Incondicional es una organización sin fines de lucro centrada en rescatar y ayudar en la transición de animales domésticos desplazados hacia hogares ideales para ellos. Bounce hace hincapié en la atención veterinaria de calidad, la nutrición, programas de esterilización/castración, educación y adopciones compatibles.</p>
-
+    <p class="relle">Tu Amigo Incondicional es una organización sin fines
+        de lucro centrada en rescatar y ayudar en la transición de animales
+        domésticos desplazados hacia hogares ideales para ellos. Bounce
+        hace hincapié en la atención veterinaria de calidad, la nutrición,
+        programas de esterilización/castración, educación y adopciones compatibles.
+    </p>
 </div>
 
 <div class="pont">
     <h1>¿Qué es un refugio para animales?</h1>
-    <!-- <video class="vi" src="../../../assets/video.mp4" autoplay muted loop controls height="200" width="350"></video>  -->
     <div class="vi">
         <iframe
-        width="952" 
-        height="536" 
-        [src]="video | domseguro : 'https://www.youtube.com/embed/' " 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-    </iframe>
+            [src]="video | domseguro : 'https://www.youtube.com/embed/' " 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
     </div>
 </div>
+
 <div class="tablas">
     <div class="tablaone">
-
         <p class="head">ADOPTA</p>
         <p>Te invitamos a nuestras jornadas de adopción o visita la fundación para que conozcas a tu alma gemela.
-            Todos nuestros peludos son entregados en óptimas condiciones de salud a adoptantes responsables que se comprometan a cuidarlos por el resto de sus vidas.</p>
+            Todos nuestros peludos son entregados en óptimas condiciones de salud a adoptantes responsables que se
+            comprometan a cuidarlos por el resto de sus vidas.
+        </p>
         <br>
         <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
         <br><br><hr>
         <span class="space"></span>
-
-
         <p class="head">APADRINA</p>
-        <p>Puedes apadrinar alguno de nuestros peludos para que su estadía en nuestro refugio sea óptima. Manejamos diferentes planes de padrinos en los que puedes hacer un aporte mensual. Si estás interesado en apadrinar un Tepiano contáctanos y te daremos más detalles.</p>
+        <p>Puedes apadrinar alguno de nuestros peludos para que su estadía en nuestro refugio sea óptima. Manejamos
+             diferentes planes de padrinos en los que puedes hacer un aporte mensual. Si estás interesado en apadrinar
+              un Tepiano contáctanos y te daremos más detalles.
+        </p>
         <br>
         <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>APADRINA A UN PELUDITO</u></a> -></p>
         <br><br><hr>
-
     </div>
     <div class="tablatwo">
-
-       
         <p class="head">DONA</p>
-        <p>Puedes donar desde alimentos y medicinas hasta cobijas o tejas para la adecuación del refugio. También puedes compartir tiempo con los peluditos, ayudarnos en la fundación o hacer donaciones en dinero.</p>
+        <p>Puedes donar desde alimentos y medicinas hasta cobijas o tejas para la adecuación del refugio. También
+             puedes compartir tiempo con los peluditos, ayudarnos en la fundación o hacer donaciones en dinero.
+        </p>
         <br>
         <p class="adop"><a class="adop" routerLink="/ayuda" routerLinkActive="active"><u>HAZ TU DONACION</u></a> -></p>
-        
         <br><br><hr>
-
-
         <br><br>
         <p class="head">DIFUNDE</p>
-        <p>Comparte, participa y apoya las jornadas de adopción y nuestros eventos como caminatas y jornadas de baño. Ayúdanos a promover las jornadas de esterilización gratuitas o de bajo costo que compartimos en nuestras redes.</p>
+        <p>Comparte, participa y apoya las jornadas de adopción y nuestros eventos como caminatas y jornadas de baño.
+            Ayúdanos a promover las jornadas de esterilización gratuitas o de bajo costo que compartimos en nuestras redes.
+        </p>
         <br>
         <p class="adop"><a class="adop" routerLink="/ayuda" routerLinkActive="active"><u>COMPARTE</u></a> -></p>
         <br><br><hr>
-
-
-
     </div>
-
 </div>
 
 <router-outlet></router-outlet>
