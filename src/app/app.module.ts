@@ -1,6 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -29,16 +28,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderComponent,
-    FooterComponent,
-    RouterOutlet,
     RouterModule,
     BrowserAnimationsModule,
     ButtonModule,
     ToastModule,
     MessagesModule,
     HttpClientModule,
-    RecursosEducativosComponent,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -47,20 +42,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireStorageModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-
-
   ],
   providers: [
     provideClientHydration(),
-    provideFirebaseApp(() => initializeApp({"projectId":"prueba2-4fcd3","appId":"1:933362159680:web:9691063426086eceed8fa5","storageBucket":"prueba2-4fcd3.appspot.com","apiKey":"AIzaSyD6RvNOzDlfPQPcKrckJ_PqBjA62Cg0_aM","authDomain":"prueba2-4fcd3.firebaseapp.com","messagingSenderId":"933362159680"})),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-
-}
+export class AppModule { }
