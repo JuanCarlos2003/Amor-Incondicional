@@ -7,8 +7,17 @@ export class AccessibilityServiceService {
   isGrayscale: boolean = false;
   isContrastMode: boolean = false;
   language: string = 'es-ES'
+  isSpeakingEnabled: boolean = false;
 
   constructor() {}
+
+  setIsSpeakingEnabled(s: boolean) {
+    this.isSpeakingEnabled = s;
+  }
+
+  getIsSpeakingEnable(){
+    return this.isSpeakingEnabled;
+  }
 
   increaseFontSize() {
     let currentSize = parseFloat(window.getComputedStyle(document.body, null).getPropertyValue('font-size'));
@@ -77,4 +86,3 @@ export class AccessibilityServiceService {
     }
   }
 }
-

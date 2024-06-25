@@ -1,50 +1,50 @@
 <div class="big">
     <div class="titulo">
-        <h1 class="nues" >Nuestras Historias...</h1>
+        <h1 (mouseover)="content($event)" class="nues" >Nuestras Historias...</h1>
     </div>
 
     <div class="con">
         <div class="box box1">
             <div class="colo">
                 <img  class="ima ima2" src="assets/media/imagenes/hist1.png" alt="" >
-                <div class="sobrepuesto">MARÍA</div>
+                <div (mouseover)="content($event)" class="sobrepuesto">MARÍA</div>
             </div>
 
             <div class="tex"> 
-                <p>Perrita de 8 años aprox. ¡Siempre sonriente y contenta!
+                <p (mouseover)="content($event)">Perrita de 8 años aprox. ¡Siempre sonriente y contenta!
                     Amorosa y moviendo su colita todo el tiempo, a pesar de
                      que lo único que conocía era el dolor.
                 </p>
                 <br>
-                <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
+                <p (mouseover)="content($event)" class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
             </div>
         </div>
 
         <div class="box box2">
             <div class="colo2">
                 <img class="ima " src="assets/media/imagenes/his.png" alt="" >
-                <div class="sobrepuesto2 sobre">ARANZA</div>
+                <div (mouseover)="content($event)" class="sobrepuesto2 sobre">ARANZA</div>
             </div>
             <div class="tex">
-            <p>Gatita de 5 años aprox. ¡Muy tierna y sociable! Es juguetona
+            <p (mouseover)="content($event)">Gatita de 5 años aprox. ¡Muy tierna y sociable! Es juguetona
                 y muy cariñosa. Fue recogida de la carretera a punto de ser atropellada.
             </p> 
         <br> 
-            <p class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
+            <p (mouseover)="content($event)" class="adop"><a class="adop" routerLink="/mascotas" routerLinkActive="active"><u>ADOPTA</u></a> -></p>
             </div>
         </div>
 
         <div class="box box3">
             <div class="colo3">
                 <img class="ima ima3" src="assets/media/imagenes/hist2.png" alt=""> 
-                <div class="sobrepuesto3 sobre" routerLink="/mascotas" routerLinkActive="active">TOBÍAS</div> 
+                <div (mouseover)="content($event)" class="sobrepuesto3 sobre" routerLink="/mascotas" routerLinkActive="active">TOBÍAS</div> 
             </div>
             <div class="tex">
-                <p>Perro de 6 meses aprox ¡Uno ojazos azules que cautivan! 
+                <p (mouseover)="content($event)">Perro de 6 meses aprox ¡Uno ojazos azules que cautivan! 
                     Cariñoso, muy juguetón y con mucha energía. Fue abandonado
                     por su familia cuando aún era un cachorrito, debido a que estaba creciendo.
                 </p> 
-                <p class="adop"><a class="adop"><u>ADOPTA</u></a> -></p>
+                <p class="adop"><a (mouseover)="content($event)" class="adop"><u>ADOPTA</u></a> -></p>
             </div>
         </div>
     </div>

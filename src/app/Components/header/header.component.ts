@@ -59,9 +59,10 @@ export class HeaderComponent implements OnInit{
     this.authService.logout();
   }
 
-
   toggleSpeaking() {
-    this.isSpeakingEnabled = !this.isSpeakingEnabled;
+    this.isSpeakingEnabled = !this.service.getIsSpeakingEnable();
+    this.service.setIsSpeakingEnabled(this.isSpeakingEnabled);
+    console.log(this.service.getIsSpeakingEnable());
   }
 
   content(event: MouseEvent) {
