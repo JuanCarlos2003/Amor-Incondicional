@@ -7,6 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       @if (authService.currentUserSig() == null || authService.currentUserSig()?.username!='Admin') {
         <a class="a-fake2"></a>
+        <a class="a-fake2"></a>
       }
       @if (authService.currentUserSig()?.username=='Admin'){
         <a routerLink="/admin" routerLinkActive="active" class="a-fake2"  (mouseover)="content($event)">Administrar</a>
