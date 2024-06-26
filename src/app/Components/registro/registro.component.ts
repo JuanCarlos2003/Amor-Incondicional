@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Animales } from '../../interfaces/animales';
 import { CalendarModule } from 'primeng/calendar';
-import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl, } from '@angular/forms';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CitasComponent } from '../../citas/citas.component';
@@ -9,10 +10,11 @@ import { Cita } from '../../interfaces/cita';
 import { CitaService } from '../../services/cita.service';
 import { AuthService } from '../../services/auth.service';
 
+
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CalendarModule, FormsModule, ReactiveFormsModule, ButtonModule, CommonModule, CitasComponent],
+  imports: [CalendarModule, FormsModule, ReactiveFormsModule, ButtonModule, CommonModule, CitasComponent, RouterModule, RouterOutlet],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })

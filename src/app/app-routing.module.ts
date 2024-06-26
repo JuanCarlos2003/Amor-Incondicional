@@ -9,6 +9,9 @@ import { BusquedaComponent } from './Components/busqueda/busqueda.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AdminComponent } from './Components/admin/admin.component';
+import { MostrarCitasComponent } from './Components/mostrar-citas/mostrar-citas.component';
+import { QrGeneratorComponent } from './Components/qr-generator/qr-generator.component';
+import path from 'path';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,7 +23,8 @@ export const routes: Routes = [
   { path: 'busqueda', component: BusquedaComponent },
   { path: 'login', component: LoginComponent},
   { path: 'registrarme', component: RegisterComponent},
-  { path: 'busqueda/:term', component: BusquedaComponent },
+  { path: 'mostrar-citas', component: MostrarCitasComponent},
+  { path: 'qrcode', component: QrGeneratorComponent},
   { path: 'admin', component: AdminComponent}
 ];
 

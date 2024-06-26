@@ -19,7 +19,7 @@ import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { QrGeneratorComponent } from './Components/qr-generator/qr-generator.component';
 
 
 @NgModule({
@@ -41,10 +41,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
+    QrGeneratorComponent,
+
+
   ],
   providers: [
     provideClientHydration(),
