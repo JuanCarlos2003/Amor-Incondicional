@@ -5,6 +5,8 @@ import { Router, RouterLinkActive, RouterModule } from '@angular/router';
 import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { AuthService } from '../../services/auth.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,7 +38,12 @@ export class LoginComponent {
         this.router.navigateByUrl('/');
       },
       error: (err) => {
-        this.errorMessage = err.code;
+        Swal.fire({
+          title: 'Ups!',
+          text: 'Parece que el email o la contraseña son incorrectos, vuelve a intentarlo',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
       }
       });
     }else{
