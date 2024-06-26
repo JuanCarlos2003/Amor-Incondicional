@@ -32,3 +32,9 @@
 .lineas{
     border-bottom: 1px solid #8d7366c4;
 }
+
+.cancelar{
+    border: none;
+    border-radius: 7px;
+    padding: 7px 15px;
+}

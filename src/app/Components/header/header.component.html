@@ -7,11 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       @if (authService.currentUserSig() == null || authService.currentUserSig()?.username!='Admin') {
         <a class="a-fake2"></a>
+        <a class="a-fake2"></a>
       }
       @if (authService.currentUserSig()?.username=='Admin'){
         <a routerLink="/admin" routerLinkActive="active" class="a-fake2"  (mouseover)="content($event)">Administrar</a>
       }
-      @if (authService.currentUserSig() && authService.currentUserSig()?.username!='Admin'){
+      @if (authService.currentUserSig()){
         <a routerLink="/mascotas" routerLinkActive="active" (mouseover)="content($event)">Registrar Cita</a>
       }
       <a routerLink="/ayuda" routerLinkActive="active" (mouseover)="content($event)">¿Como Ayudar?</a>
@@ -22,7 +23,7 @@
           @if (authService.currentUserSig() == null) {
             <div id="boton">
               <button id="login" type="button" class="btn btn-outline-secondary" routerLink="/login" routerLinkActive="active"  (mouseover)="content($event)">Login</button>
-              <button type="button" class="btn btn-outline-secondary" routerLink="/registrarme" routerLinkActive="active"  (mouseover)="content($event)">Sign in</button>
+              <button type="button" class="btn btn-outline-secondary" routerLink="/registrarme" routerLinkActive="active"  (mouseover)="content($event)">Sign up</button>
             </div>
           }@else{
             <h6 id="bienvenida">Bienvenido, {{authService.currentUserSig()?.username}}</h6>

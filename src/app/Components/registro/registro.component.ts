@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Animales } from '../../interfaces/animales';
 import { CalendarModule } from 'primeng/calendar';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl } from '@angular/forms';
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { CitasComponent } from '../../citas/citas.component';
 import { Cita } from '../../interfaces/cita';
 import { CitaService } from '../../services/cita.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -40,6 +41,8 @@ export class RegistroComponent {
   formularioCita: FormGroup;
   fechaLocal!: string;
 
+  nombreuser!: string;
+
   opciones: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: '2-digit',
@@ -50,7 +53,7 @@ export class RegistroComponent {
     timeZone: 'America/Mexico_City'
   };
 
-  constructor(private citaService: CitaService) {
+  constructor(private citaService: CitaService, private authService: AuthService) {
     this.array = [];
     this.seleccion = "";
     this.guardada = 0;
@@ -61,7 +64,7 @@ export class RegistroComponent {
     this.minuteInterval = 15;
 
     this.formularioCita = new FormGroup({
-      nombre: new FormControl('', [Validators.required, this.noSpecialCharsValidator, Validators.maxLength(50)]),
+      nombre: new FormControl({ value: '', disabled: true }, [Validators.required, this.noSpecialCharsValidator(), Validators.maxLength(50)]),
       telefono: new FormControl('', [Validators.required, this.phoneValidator(), Validators.minLength(13)]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       genero: new FormControl('', [Validators.required]),
@@ -74,6 +77,21 @@ export class RegistroComponent {
     const actualDate = new Date();
     actualDate.setMinutes(0);
     this.date = actualDate;
+
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        const username = user.displayName || user.phoneNumber || '';
+        this.authService.currentUserSig.set({
+          email: user.email!,
+          username: username,
+        });
+        this.nombreuser = username;
+        this.formularioCita.get('nombre')?.setValue(username);
+      } else {
+        this.authService.currentUserSig.set(null);
+      }
+      console.log(this.authService.currentUserSig());
+    });
   }
 
   onSelect(event: any) {
@@ -131,7 +149,7 @@ export class RegistroComponent {
           return;
         }
         const nuevaCita: Cita = {
-          nombreIn: this.formularioCita.value.nombre,
+          nombreIn: this.nombreuser,
           telefonoIn: this.formularioCita.value.telefono,
           correoIn: this.formularioCita.value.correo,
           fechaCita: this.fechaLocal,

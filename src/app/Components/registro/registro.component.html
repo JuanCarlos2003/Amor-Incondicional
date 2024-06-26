@@ -37,7 +37,7 @@
         <div class="formulario" [formGroup]="formularioCita">
           <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('nombre')?.valid && formularioCita.get('nombre')?.touched}">
             <label for="nombre">Nombre del interesado</label>
-            <input pInputText id="nombre" formControlName="nombre" placeholder="Juan Pérez" />
+            <input pInputText id="nombre" formControlName="nombre" />
             <small *ngIf="formularioCita.get('nombre')?.invalid && formularioCita.get('nombre')?.touched">
               Escribe un nombre válido.
             </small>

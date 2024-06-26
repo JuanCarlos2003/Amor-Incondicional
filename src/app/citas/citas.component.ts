@@ -18,19 +18,14 @@ export class CitasComponent implements OnInit, OnChanges {
   @Input() actualizar: boolean;
 
   auxActu: boolean;
-
   tiempo: any;
-
   stateOptions = [
     { label: 'Anteriores', value: 1 },
     { label: 'Próximas', value: 2 }
   ];
 
   citas: Cita[] = [];
-
   siHay: boolean;
-  telphone: boolean;
-
   presente: Date = new Date();
   fechaActual!: string;
 
@@ -48,7 +43,6 @@ export class CitasComponent implements OnInit, OnChanges {
     this.actualizar = false;
     this.auxActu = false;
     this.siHay = false;
-    this.telphone = false;
     this.tiempo = 2;
 
     this.fechaActual = this.presente.getFullYear() + '-' + 
@@ -62,19 +56,18 @@ export class CitasComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
-      if(user){
+      if (user) {
         this.authService.currentUserSig.set({
           email: user.email!,
           username: user.displayName!,
         });
-        if((user.displayName!)==null){
-          this.telphone = true;
+        if ((user.displayName!) == null) {
           this.authService.currentUserSig.set({
             email: user.email!,
             username: user.phoneNumber!,
           });
         }
-      }else{
+      } else {
         this.authService.currentUserSig.set(null);
       }
       console.log(this.authService.currentUserSig());
@@ -98,31 +91,29 @@ export class CitasComponent implements OnInit, OnChanges {
 
   obtenerCitas(username: string): void {
     console.log('Obteniendo citas para el usuario:', username);
-    if(this.telphone == true){
-      this.citaService.getCitasByTel(username).subscribe({
-        next: (data: any) => {
-          console.log('Citas received:', data);
-          this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
-          this.siHay = this.citas.length > 0;
-        },
-        error: (error) => {
-          console.error('Error al obtener las citas', error);
-          this.siHay = false;
-        }
-      });
-    } else{
-      this.citaService.getCitasByUsuario(username).subscribe({
-        next: (data: any) => {
-          console.log('Citas received:', data);
-          this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
-          this.siHay = this.citas.length > 0;
-        },
-        error: (error) => {
-          console.error('Error al obtener las citas', error);
-          this.siHay = false;
-        }
-      });
-    }
+    this.citaService.getCitasByUsuario(username).subscribe({
+      next: (data: any) => {
+        console.log('Citas received:', data);
+        this.citas = Object.keys(data).map(key => ({ ...data[key], key }));
+        this.siHay = this.citas.length > 0;
+      },
+      error: (error) => {
+        console.error('Error al obtener las citas', error);
+        this.siHay = false;
+      }
+    });
   }
-  
+
+  eliminarCita(key: string): void {
+    this.citaService.delete(key).subscribe({
+      next: () => {
+        console.log(`Cita con clave ${key} eliminada`);
+        this.citas = this.citas.filter(cita => cita.key !== key);
+        this.siHay = this.citas.length > 0;
+      },
+      error: (error) => {
+        console.error('Error al eliminar la cita', error);
+      }
+    });
+  }
 }
