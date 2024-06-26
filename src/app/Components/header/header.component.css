@@ -37,6 +37,7 @@ a {
     text-align: center;
     text-decoration: none;
     color: #654321;
+    /* border: 1px solid blue; */
 }
 
 a.logo {
