@@ -1,27 +1,26 @@
 <div *ngIf="siHay; else noCitas">
-    <h2>Citas</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Interesado</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
-          <th>Fecha de visita</th>
-          <th>Refugiado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cita of citas">
-          <td>{{ cita.nombreIn }}</td>
-          <td>{{ cita.telefonoIn }}</td>
-          <td>{{ cita.correoIn }}</td>
-          <td>{{ cita.fechaCita }}</td>
-          <td>{{ cita.nombreAn }}</td>      
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <ng-template #noCitas>
-    <p>No se encontraron citas.</p>
-  </ng-template>
-  
+  <h2>Citas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Interesado</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Fecha de visita</th>
+        <th>Refugiado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td data-label="Interesado">{{ cita.nombreIn }}</td>
+        <td data-label="Teléfono">{{ cita.telefonoIn }}</td>
+        <td data-label="Correo">{{ cita.correoIn }}</td>
+        <td data-label="Fecha de visita">{{ cita.fechaCita }}</td>
+        <td data-label="Refugiado">{{ cita.nombreAn }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noCitas>
+  <p>No se encontraron citas.</p>
+</ng-template>

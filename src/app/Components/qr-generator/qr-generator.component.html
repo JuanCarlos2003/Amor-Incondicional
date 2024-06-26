@@ -1,4 +1,10 @@
 <app-header></app-header>
-<br><br>
-<div #canvas></div>
+
+<main>
+  <div #canvas></div>
+  <h2>Al escanear el codigo QR podras ver la información de tu cita</h2>
+  <button (click)="updateQRCode()">Recargar</button>
+</main>
+
 <app-footer></app-footer>
+

@@ -1,79 +1,96 @@
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f8f9fa;
-    color: #333;
+  font-family: 'Arial', sans-serif;
+  background-color: #F5F5DC; 
+  color: #4B3F2F; 
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  color: #8B4513; 
+  border-bottom: 2px solid #8B4513;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #FFF7E7; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #D2B48C; 
+  color: #FFF;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F5DEB3; 
+}
+
+tbody tr:hover {
+  background-color: #F0E68C; 
+}
+
+
+p {
+  font-size: 18px;
+  color: #000000; 
+}
+
+
+
+.no-citas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+
+@media (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
-  
-  h2 {
-    text-align: center;
-    color: #58433e;
-    margin-bottom: 20px;
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
   }
-  
-  table {
-    width: 100%;
-    max-width: 800px;
-    border-collapse: collapse;
-    margin: 0 auto;
-    background-color: #58433e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+
+  tr {
+    margin-bottom: 15px;
   }
-  
-  thead {
-    background-color: #58433e;
-    color: #fff;
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
   }
-  
-  th, td {
-    padding: 12px 15px;
+
+  td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
     text-align: left;
   }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  p {
-    text-align: center;
-    font-size: 18px;
-    color: #666;
-  }
-  
-  @media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-  
-    thead tr {
-      display: none;
-    }
-  
-    tr {
-      margin-bottom: 15px;
-    }
-  
-    td {
-      padding: 10px;
-      text-align: right;
-      position: relative;
-    }
-  
-    td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 15px;
-      font-weight: bold;
-      text-align: left;
-    }
-  }
-  
+}

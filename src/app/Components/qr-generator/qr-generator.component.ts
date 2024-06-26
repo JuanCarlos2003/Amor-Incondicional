@@ -11,23 +11,24 @@ import { FooterComponent } from "../footer/footer.component";
 })
 export class QrGeneratorComponent implements OnInit {
   @ViewChild("canvas", { static: true }) canvas!: ElementRef;
+  qrCode: any;
 
   async ngOnInit(): Promise<void> {
     if (typeof window !== 'undefined') {
-      // Dynamically import QRCodeStyling
+      // Importa QRCodeStyling de forma dinámica
       const { default: QRCodeStyling } = await import("qr-code-styling");
 
-      const qrCode = new QRCodeStyling({
+      this.qrCode = new QRCodeStyling({
         width: 232,
         height: 232,
         margin: 14,
-        data: "http://localhost:4200/mostrar-citas",
+        data: this.generateRandomData(),
         dotsOptions: {
-          color: "#4267b2",
+          color: "#6C4B07",
           type: "rounded"
         },
         backgroundOptions: {
-          color: "#e9ebee"
+          color: "#FFF7E7"
         },
         imageOptions: {
           crossOrigin: "anonymous",
@@ -35,7 +36,19 @@ export class QrGeneratorComponent implements OnInit {
         }
       });
 
-      qrCode.append(this.canvas.nativeElement);
+      this.qrCode.append(this.canvas.nativeElement);
     }
+  }
+
+  generateRandomData(): string {
+    // Genera una URL aleatoria o cualquier otra información dinámica
+    const randomString = Math.random().toString(36).substring(7);
+    return `http://localhost:4200/mostrar-citas?data=${randomString}`;
+  }
+
+  updateQRCode(): void {
+    this.qrCode.update({
+      data: this.generateRandomData()
+    });
   }
 }
