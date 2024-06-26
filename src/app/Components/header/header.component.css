@@ -79,6 +79,11 @@ input {
 @media screen and (max-width: 1199px) {
     a { width: 200px; }
     a.logo { padding: 0; margin: 5px 0; width: 200px;}
+    .icono-accesibilidad {
+      position: absolute;
+      right: 15px; 
+      top: 100px;
+    }
 }
 
 #usuarios{
@@ -108,9 +113,8 @@ button#login{
     width: 40px;
     height: 40px;
     position: absolute;
-    right: 20px; 
-    top: 30px;
- 
+    right: 5px;
+    top: 5px;
   }
 .imap {
     width: 50px;
