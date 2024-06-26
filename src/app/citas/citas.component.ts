@@ -18,18 +18,14 @@ export class CitasComponent implements OnInit, OnChanges {
   @Input() actualizar: boolean;
 
   auxActu: boolean;
-
   tiempo: any;
-
   stateOptions = [
     { label: 'Anteriores', value: 1 },
     { label: 'Próximas', value: 2 }
   ];
 
   citas: Cita[] = [];
-
   siHay: boolean;
-
   presente: Date = new Date();
   fechaActual!: string;
 
@@ -60,18 +56,18 @@ export class CitasComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
-      if(user){
+      if (user) {
         this.authService.currentUserSig.set({
           email: user.email!,
           username: user.displayName!,
         });
-        if((user.displayName!)==null){
+        if ((user.displayName!) == null) {
           this.authService.currentUserSig.set({
             email: user.email!,
             username: user.phoneNumber!,
           });
         }
-      }else{
+      } else {
         this.authService.currentUserSig.set(null);
       }
       console.log(this.authService.currentUserSig());
@@ -98,7 +94,7 @@ export class CitasComponent implements OnInit, OnChanges {
     this.citaService.getCitasByUsuario(username).subscribe({
       next: (data: any) => {
         console.log('Citas received:', data);
-        this.citas = Object.keys(data).map(key => ({ ...data[key], clave: key }));
+        this.citas = Object.keys(data).map(key => ({ ...data[key], key }));
         this.siHay = this.citas.length > 0;
       },
       error: (error) => {
@@ -107,5 +103,17 @@ export class CitasComponent implements OnInit, OnChanges {
       }
     });
   }
-  
+
+  eliminarCita(key: string): void {
+    this.citaService.delete(key).subscribe({
+      next: () => {
+        console.log(`Cita con clave ${key} eliminada`);
+        this.citas = this.citas.filter(cita => cita.key !== key);
+        this.siHay = this.citas.length > 0;
+      },
+      error: (error) => {
+        console.error('Error al eliminar la cita', error);
+      }
+    });
+  }
 }
