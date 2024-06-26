@@ -7,7 +7,7 @@ import { take } from 'rxjs';
 })
 export class AnimalesService {
 
-  urlAPI:string = "https://amorinc6.free.beeceptor.com/todos";
+  urlAPI:string = "https://amorinc9.free.beeceptor.com/todos";
 
   constructor(private http: HttpClient) { }
 
