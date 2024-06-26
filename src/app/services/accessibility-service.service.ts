@@ -7,6 +7,8 @@ export class AccessibilityServiceService {
   isGrayscale: boolean = false;
   isContrastMode: boolean = false;
   language: string = 'es-ES'
+  isFontSizeIncreased: boolean = false;
+  isFontSizeDecreased: boolean = false;
   isSpeakingEnabled: boolean = false;
   constructor() {}
   
@@ -18,21 +20,31 @@ export class AccessibilityServiceService {
   getIsSpeakingEnable(){
     return this.isSpeakingEnabled;
   }
-
+  
   increaseFontSize() {
-    let currentSize = parseFloat(window.getComputedStyle(document.body, null).getPropertyValue('font-size'));
-    let newSize = currentSize * 1.2; // Incremento del 20%
-    if (newSize <= 46) {
-      document.body.style.fontSize = newSize + 'px';
-    }
+    const elements = document.querySelectorAll('*');
+    elements.forEach(element => {
+      if (element instanceof HTMLElement) {
+        const currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+        const newSize = currentSize * 1.02; // Incremento del 20%
+        if (newSize <= 46) {
+          element.style.fontSize = newSize + 'px';
+        }
+      }
+    });
   }
   
   decreaseFontSize() {
-    let currentSize = parseFloat(window.getComputedStyle(document.body, null).getPropertyValue('font-size'));
-    let newSize = currentSize * 0.8; // Decremento del 20%
-    if (newSize >= 8) {
-      document.body.style.fontSize = newSize + 'px';
-    }
+    const elements = document.querySelectorAll('*');
+    elements.forEach(element => {
+      if (element instanceof HTMLElement) {
+        const currentSize = parseFloat(window.getComputedStyle(element, null).getPropertyValue('font-size'));
+        const newSize = currentSize * 0.8; // Decremento del 20%
+        if (newSize >= 8) {
+          element.style.fontSize = newSize + 'px';
+        }
+      }
+    });
   }
   
 
