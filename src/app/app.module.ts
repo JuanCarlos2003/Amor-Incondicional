@@ -21,6 +21,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+
 @NgModule({
   declarations: [
     AppComponent,

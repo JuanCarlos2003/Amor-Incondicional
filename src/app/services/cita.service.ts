@@ -10,6 +10,7 @@ import { Observable, tap } from 'rxjs';
 export class CitaService {
 
   private apiUrl = 'http://localhost:3000/citas';
+  private emailUrl = 'http://localhost:3000/citareg';
 
   constructor(private http: HttpClient) {}
 
@@ -73,5 +74,10 @@ export class CitaService {
   verificarCitaExistente(fecha: string): Observable<{ existe: boolean }> {
     return this.http.get<{ existe: boolean }>(`${this.apiUrl}/existe/${fecha}`);
   }
+
+  enviarCorreo(datosCorreo: { destinatario: string; nombre: string; telefono: string; correo: string; fechaCita: string; nombreAn: string; genero: string; servicios: string[]; motivo: string }): Observable<void> {
+    return this.http.post<void>(this.emailUrl, datosCorreo);
+  }
+  
 
 }

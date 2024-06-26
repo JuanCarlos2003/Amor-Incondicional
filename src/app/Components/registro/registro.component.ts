@@ -123,7 +123,7 @@ export class RegistroComponent {
       ('0' + this.date.getDate()).slice(-2) + ' ' +
       ('0' + this.date.getHours()).slice(-2) + ':' +
       ('0' + this.date.getMinutes()).slice(-2);
-    
+  
     this.citaService.verificarCitaExistente(this.fechaLocal).subscribe({
       next: (response) => {
         if (response.existe) {
@@ -140,16 +140,38 @@ export class RegistroComponent {
           servicios: this.formularioCita.value.servicios,
           motivo: this.formularioCita.value.motivo
         };
-
+  
         const key = this.citaService.generarKey();
-
+  
         this.citaService.create(nuevaCita, key).subscribe({
           next: () => {
             console.log('Nueva cita registrada');
             this.guardada = 2;
             this.cambio = !this.cambio;
             this.actualizacion.emit(this.cambio);
-
+  
+            // Enviar correo
+            const datosCorreo = {
+              destinatario: nuevaCita.correoIn ?? '',
+              nombre: nuevaCita.nombreIn ?? '',
+              telefono: nuevaCita.telefonoIn ?? '',
+              correo: nuevaCita.correoIn ?? '',
+              fechaCita: this.fechaLocal,
+              nombreAn: nuevaCita.nombreAn ?? '',
+              genero: nuevaCita.genero ?? '',
+              servicios: nuevaCita.servicios ?? [],
+              motivo: nuevaCita.motivo ?? ''
+            };
+  
+            this.citaService.enviarCorreo(datosCorreo).subscribe({
+              next: () => {
+                console.log('Correo enviado exitosamente');
+              },
+              error: (error) => {
+                console.error('Error al enviar el correo', error);
+              }
+            });
+  
             this.formularioCita.reset();
             this.formularioCita.get('servicios')?.setValue([]);
           },
@@ -163,6 +185,9 @@ export class RegistroComponent {
       }
     });
   }
+  
+  
+  
 
   noSpecialCharsValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
