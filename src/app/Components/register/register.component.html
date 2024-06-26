@@ -15,10 +15,18 @@
     @if (eleccion=='' || eleccion=='email'){
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div>
+          <label for="exampleFormControlInput1" class="form-label"><b>Nombre completo</b></label>
+          <input type="text" formControlName="name" required class="form-control" />
+          @if (this.form.get('name')?.errors?.['required']) {
+            <span>(El nombre no puede quedar vacío)</span>
+          }
+        </div>
+        <br>
+        <div>
           <label for="exampleFormControlInput1" class="form-label"><b>Usuario</b></label>
           <input type="text" formControlName="username" required class="form-control" />
           @if (this.form.get('username')?.errors?.['required']) {
-            <span>(El nombre no puede quedar vacío)</span>
+            <span>(El usuario no puede quedar vacío)</span>
           }
         </div>
         <br>

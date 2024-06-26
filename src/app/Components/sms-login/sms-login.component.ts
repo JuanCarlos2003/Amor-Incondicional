@@ -5,6 +5,8 @@ import { PhoneAuthProvider, RecaptchaVerifier, getAuth, signInWithCredential, si
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-sms-login',
   templateUrl: './sms-login.component.html',
@@ -69,6 +71,12 @@ export class SmsLoginComponent implements OnInit{
         next: () => {
           this.paso='codigo';
           console.log("Envie el sms");
+          Swal.fire({
+            title: 'Ok!',
+            text: 'Envié el código SMS',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          });
         },
         error: (error: any) => {
           console.log('No message');
@@ -87,7 +95,15 @@ export class SmsLoginComponent implements OnInit{
       this.auth.verifySmsCode(resultadoCodigo.codigo).subscribe({
         next: () => {
           console.log('SMS code confirmed!');
-          this.router.navigateByUrl('/');
+          Swal.fire({
+            title: "Genial!",
+            text: "Cuenta creada exitosamente. El código ha sido confirmado!!",
+            icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigateByUrl('/'); 
+            }
+          });
         },
         error: (error: any) => {
           console.error('ERROR:', error);

@@ -29,6 +29,7 @@ export class RegisterComponent {
   constructor(private auth: Auth, private authService: AuthService) {}
 
   form = this.fb.nonNullable.group({
+    name: ['', Validators.required],
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
@@ -43,7 +44,15 @@ export class RegisterComponent {
         this.authService.register(rawFrom.email, rawFrom.username, rawFrom.password)
         .subscribe({
           next:() => {
-          this.router.navigateByUrl('/');
+            Swal.fire({
+              title: "Genial!",
+              text: "Cuenta creada exitosamente",
+              icon: "success",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigateByUrl('/'); 
+              }
+            });
         },
         error: (err) => {
           this.errorMessage = err.code;
@@ -65,7 +74,15 @@ export class RegisterComponent {
   async loginWithGoogle() {
     try {
       const result = await signInWithPopup(this.auth, new GoogleAuthProvider());
-      this.router.navigateByUrl('/');
+      Swal.fire({
+        title: "Genial!",
+        text: "Cuenta creada exitosamente",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigateByUrl('/'); 
+        }
+      });
     } catch (error) {
       console.log(error);
     }
