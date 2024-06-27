@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { QrGeneratorComponent } from './Components/qr-generator/qr-generator.component';
+import { AdminCharComponent } from './Components/admin-char/admin-char.component';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { QrGeneratorComponent } from './Components/qr-generator/qr-generator.com
     AngularFirestoreModule,
     AngularFireStorageModule,
     QrGeneratorComponent,
-
+    AdminCharComponent
 
   ],
   providers: [

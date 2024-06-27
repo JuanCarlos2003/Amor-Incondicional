@@ -11,6 +11,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { AdminComponent } from './Components/admin/admin.component';
 import { MostrarCitasComponent } from './Components/mostrar-citas/mostrar-citas.component';
 import { QrGeneratorComponent } from './Components/qr-generator/qr-generator.component';
+import { AdminCharComponent } from './Components/admin-char/admin-char.component';
 import path from 'path';
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'registrarme', component: RegisterComponent},
   { path: 'mostrar-citas', component: MostrarCitasComponent},
   { path: 'qrcode', component: QrGeneratorComponent},
+  { path: 'admin-char', component: AdminCharComponent },
   { path: 'admin', component: AdminComponent}
 ];
 

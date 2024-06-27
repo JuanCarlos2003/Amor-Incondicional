@@ -5,14 +5,16 @@ import { CitaService } from '../../services/cita.service';
 import { Cita } from '../../interfaces/cita';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AdminCharComponent } from '../admin-char/admin-char.component';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
   standalone: true,
-  imports: [HeaderComponent, FormsModule, CommonModule]
+  imports: [HeaderComponent, FormsModule, CommonModule, AdminCharComponent],
 })
+
 export class AdminComponent {
   isSpeakingEnabled: boolean = false;
   usuarioNombre: string = '';
@@ -83,4 +85,6 @@ export class AdminComponent {
     );
   }
   
+
+
 }
