@@ -1,0 +1,46 @@
+* {font-family: Georgia, 'Times New Roman', Times, serif;}
+
+.admin-container {
+    margin: 60px 150px;
+    padding: 10px 50px;
+    border-left: 7px solid #654321;
+    border-radius: 7px;
+    background-color: #65432110;
+}
+
+h3, h1{
+    margin-top: 30px;
+    color: #654321;
+}
+
+.consulta {
+    margin-bottom: 20px;
+}
+
+input{
+    margin-right: 30px;
+}
+
+.resultados {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resultado {
+    flex: 1 1 calc(33.333% - 20px);
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resultado div {
+    margin-bottom: 5px;
+}
+
+button{
+    border-radius: 7px;
+    border: 1px solid rgb(110, 110, 110);
+}
+  
