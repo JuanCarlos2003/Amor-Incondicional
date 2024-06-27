@@ -1,52 +1,58 @@
 <div [ngClass]="{'tablas': true, 'no-tablas': false}">
-    <div class="op">
-      <h2>Citas Registradas</h2>
-      <p-selectButton 
-        [options]="stateOptions" 
-        [(ngModel)]="tiempo"  
-        optionLabel="label" 
-        optionValue="value" 
-      />
-    </div>
-  
-    <div *ngIf="siHay; else noCitas">
-      <p-table [value]="citas" styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem'}">
-        <ng-template pTemplate="header">
-          <tr [ngClass]="{'encabezado': true}">
-            <th>Interesado</th>
-            <th>Teléfono</th>
-            <th>Correo</th>
-            <th>Fecha de visita</th>
-            <th>Refugiado</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-cita>
-          <ng-container *ngIf="tiempo === 1 && fechaActual >= cita.fechaCita">
-            <tr [ngClass]="{'lineas': true}">
-              <td>{{ cita.nombreIn }}</td>
-              <td>{{ cita.telefonoIn }}</td>
-              <td>{{ cita.correoIn }}</td>
-              <td>{{ cita.fechaCita }}</td>
-              <td>{{ cita.nombreAn }}</td>
-            </tr>
-          </ng-container>
-          <ng-container *ngIf="tiempo === 2 && fechaActual < cita.fechaCita">
-            <tr [ngClass]="{'lineas': true}">
-              <td>{{ cita.nombreIn }}</td>
-              <td>{{ cita.telefonoIn }}</td>
-              <td>{{ cita.correoIn }}</td>
-              <td>{{ cita.fechaCita }}</td>
-              <td>{{ cita.nombreAn }}</td>
-            </tr>
-          </ng-container>
-        </ng-template>
-      </p-table>
-    </div>
-  
-    <ng-template #noCitas>
-      <div class="no-hay">
-        <h4>No hay citas para mostrar</h4>
-      </div>
-    </ng-template>
+  <div class="op">
+    <h2>Citas Registradas</h2>
+    <p-selectButton 
+      [options]="stateOptions" 
+      [(ngModel)]="tiempo"  
+      optionLabel="label" 
+      optionValue="value" 
+    />
   </div>
-  
+
+  <div *ngIf="siHay; else noCitas">
+    <p-table [value]="citas" styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+        <tr [ngClass]="{'encabezado': true}">
+          <th>Interesado</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Fecha de visita</th>
+          <th>Refugiado</th>
+          <th>Cancelar</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cita>
+        <ng-container *ngIf="tiempo === 1 && fechaActual >= cita.fechaCita">
+          <tr [ngClass]="{'lineas': true}">
+            <td>{{ cita.nombreIn }}</td>
+            <td>{{ cita.telefonoIn }}</td>
+            <td>{{ cita.correoIn }}</td>
+            <td>{{ cita.fechaCita }}</td>
+            <td>{{ cita.nombreAn }}</td>
+            <td>
+              <button class="cancelar" (click)="eliminarCita(cita.key)"><i class="fa-solid fa-ban"></i></button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="tiempo === 2 && fechaActual < cita.fechaCita">
+          <tr [ngClass]="{'lineas': true}">
+            <td>{{ cita.nombreIn }}</td>
+            <td>{{ cita.telefonoIn }}</td>
+            <td>{{ cita.correoIn }}</td>
+            <td>{{ cita.fechaCita }}</td>
+            <td>{{ cita.nombreAn }}</td>
+            <td>
+              <button class="cancelar" (click)="eliminarCita(cita.key)"><i class="fa-solid fa-ban"></i></button>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <ng-template #noCitas>
+    <div class="no-hay">
+      <h4>No hay citas para mostrar</h4>
+    </div>
+  </ng-template>
+</div>

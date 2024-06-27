@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
-import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { AccessibilityServiceService } from '../../services/accessibility-service.service';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports:  [
-              FormsModule,
-              RouterOutlet, 
-              RouterModule, 
-              ButtonModule,
-              ToastModule,
-              ConfirmDialogModule,
-              HeaderComponent,
-              FooterComponent
-            ],
+  imports: [
+    FormsModule,
+    RouterOutlet,
+    RouterModule,
+    ButtonModule,
+    ToastModule,
+    ConfirmDialogModule,
+    HeaderComponent,
+    FooterComponent
+  ],
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css', './contacton2.component.css'],
   providers: [MessageService, ConfirmationService]
@@ -31,54 +31,48 @@ export class ContactoComponent {
   nombreForm: string = "";
   apellidoForm: string = "";
   msgForm: string = "";
-  correoElectronico: string = "contacto@amorincondicional.org";
+  correoElectronico: string = "siosaenz15@gmail.com";
   telefonoDeContacto: string = "+52 55 1234 5678";
   horarioDeAtencion: string[] = ["Lunes a Viernes: 9:00 AM - 5:00 PM", "Sábados: 9:00 AM - 1:00 PM", "Domingos: Cerrado"];
   name: string = "";
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService,private service: AccessibilityServiceService) {}
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private http: HttpClient) { }
 
-    confirm() {
-        if (this.nombreForm != "" && this.correoForm != "" && this.msgForm != "" && this.apellidoForm != "") {
-          this.confirmationService.confirm({
-            header: 'Confirmación',
-            message: '¿Estás seguro de que deseas enviar esta información?',
-            acceptIcon: 'pi pi-check mr-2',
-            rejectIcon: 'pi pi-times mr-2',
-            rejectButtonStyleClass: 'p-button-sm',
-            acceptButtonStyleClass: 'p-button-outlined p-button-sm',
-            accept: () => {
-              this.messageService.add({ severity: 'info', summary: '¡Formulario enviado con éxito!', detail: 'Gracias por enviar su formulario. Pronto recibirá una respuesta por nuestra parte.', life: 3000 });
-              this.correoForm = this.nombreForm = this.msgForm  = this.apellidoForm = "";
-            },
-            reject: () => {
-              this.messageService.add({ severity: 'error', summary: 'No se enviará la información.', detail: 'Para enviar el formulario, por favor presione el botón "Yes"', life: 3000 });
+  confirm() {
+    if (this.nombreForm != "" && this.correoForm != "" && this.msgForm != "" && this.apellidoForm != "") {
+      this.confirmationService.confirm({
+        header: 'Confirmación',
+        message: '¿Estás seguro de que deseas enviar esta información?',
+        acceptIcon: 'pi pi-check mr-2',
+        rejectIcon: 'pi pi-times mr-2',
+        rejectButtonStyleClass: 'p-button-sm',
+        acceptButtonStyleClass: 'p-button-outlined p-button-sm',
+        accept: () => {
+          const emailData = {
+            subject: 'Nuevo mensaje de contacto',
+            email: 'siosaenz15@gmail.com',
+            description: this.msgForm,
+            dynamicData: {
+              nombre: this.nombreForm,
+              apellido: this.apellidoForm,
+              correo: this.correoForm,
+              mensaje: this.msgForm
             }
-          });
-        }else {
-          this.messageService.add({ severity: 'warn', summary: 'Por favor, complete todos los campos del formulario antes de enviar.', detail: 'Todos los campos son obligatorios para poder procesar su solicitud correctamente.', life: 3000 });
-        }
-    }
+          };
 
-
-    isSpeakingEnabled: boolean = false;
-  
-  
-
-  content(event: MouseEvent) {
-    this.isSpeakingEnabled = this.service.getIsSpeakingEnable();
-    const element = event.target as HTMLElement;
-    let contenido: string[] = [];
-    if (element.textContent != null) {
-      contenido = element.textContent.split(' ');
-    } else {
-      contenido = [""];
-    }
-    const contenidoString = contenido.join(' ');
-    console.log(this.isSpeakingEnabled);
-    if (this.isSpeakingEnabled) {
-      this.service.speak(contenidoString);
-    }
+          this.http.post('http://localhost:3000/contact', emailData)
+            .subscribe(
+              response => {
+                console.log('Correo enviado:', response);
+              },
+              error => {
+                console.error('Error al enviar el correo:', error);
+                this.messageService.add({ severity: 'success', summary: 'Correo enviado', detail: 'Su mensaje ha sido enviado correctamente.' });
+                this.correoForm = this.nombreForm = this.msgForm  = this.apellidoForm = "";
+              }
+            );
+        },
+      });
+    } 
   }
 }
- 

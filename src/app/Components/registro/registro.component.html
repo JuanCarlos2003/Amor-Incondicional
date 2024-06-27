@@ -37,7 +37,7 @@
         <div class="formulario" [formGroup]="formularioCita">
           <div class="interesado" [ngClass]="{'campo-invalido': !formularioCita.get('nombre')?.valid && formularioCita.get('nombre')?.touched}">
             <label for="nombre">Nombre del interesado</label>
-            <input pInputText id="nombre" formControlName="nombre" placeholder="Juan Pérez" />
+            <input pInputText id="nombre" formControlName="nombre" />
             <small *ngIf="formularioCita.get('nombre')?.invalid && formularioCita.get('nombre')?.touched">
               Escribe un nombre válido.
             </small>
@@ -116,8 +116,8 @@
           <p-calendar class="" [inline]="true" [(ngModel)]="date" [showTime]="true" [showSeconds]="false" hourFormat="24" (onSelect)="onSelect($event)"></p-calendar>
         </div>
       </div>
-      <div class="btn-registrar">
-        <button (click)="guardarCita()" [disabled]="!formularioCita.valid">Guardar Cita</button>
+      <div class="btn-registrar">        
+        <a routerLink="/qrcode" routerLinkActive="router-link-active" ><button (click)="guardarCita()" [disabled]="!formularioCita.valid">Guardar Cita</button></a>
       </div>
     </ng-container>
   </ng-container>

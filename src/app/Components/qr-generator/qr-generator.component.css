@@ -1,0 +1,23 @@
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#canvas {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  #canvas {
+    height: 300px;
+  }
+}

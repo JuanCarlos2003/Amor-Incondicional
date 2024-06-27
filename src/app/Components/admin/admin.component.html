@@ -1,2 +1,61 @@
 <app-header></app-header>
-<p>admin works!</p>
+
+<div class="admin-container">
+  <h1>{{titulo | uppercase}}</h1>
+  
+  <div class="consulta">
+    <h3>{{usuario | uppercase}}</h3>
+    <input type="text" placeholder="Nombre del usuario" [(ngModel)]="usuarioNombre">
+    <button (click)="consultarCitasUsuario()">Consultar</button>
+    <div *ngIf="citasUsuario">
+      <div class="resultados">
+        <div class="resultado" *ngFor="let cita of citasUsuario">
+          <div><strong>Correo:</strong> {{ cita.correoIn }}</div>
+          <div><strong>Fecha:</strong> {{ cita.fechaCita }}</div>
+          <div><strong>Género:</strong> {{ cita.genero }}</div>
+          <div><strong>Motivo:</strong> {{ cita.motivo }}</div>
+          <div><strong>Nombre:</strong> {{ cita.nombreAn }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="consulta">
+    <h3>{{fechas | uppercase}}</h3>
+    <input type="date" [(ngModel)]="startDate">
+    <input type="date" [(ngModel)]="endDate">
+    <button (click)="consultarCitasRango()">Consultar</button>
+    <div *ngIf="citasRango">
+      <div class="resultados">
+        <div class="resultado" *ngFor="let cita of citasRango">
+          <div><strong>Correo:</strong> {{ cita.correoIn }}</div>
+          <div><strong>Fecha:</strong> {{ cita.fechaCita }}</div>
+          <div><strong>Género:</strong> {{ cita.genero }}</div>
+          <div><strong>Motivo:</strong> {{ cita.motivo }}</div>
+          <div><strong>Nombre:</strong> {{ cita.nombreAn }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="consulta">
+    <h3>{{todas | uppercase}}</h3>
+    <button (click)="obtenerTodasCitas()">Obtener</button>
+    <div *ngIf="todasCitas">
+      <div class="resultados">
+        <div class="resultado" *ngFor="let cita of todasCitas">
+          <div><strong>Correo:</strong> {{ cita.correoIn }}</div>
+          <div><strong>Fecha:</strong> {{ cita.fechaCita }}</div>
+          <div><strong>Género:</strong> {{ cita.genero }}</div>
+          <div><strong>Motivo:</strong> {{ cita.motivo }}</div>
+          <div><strong>Nombre:</strong> {{ cita.nombreAn }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-admin-char></app-admin-char>
+</div>
+
+<br><br>
+
