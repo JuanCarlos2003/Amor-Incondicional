@@ -46,9 +46,4 @@ export class QrGeneratorComponent implements OnInit {
     return `http://localhost:4200/mostrar-citas?data=${randomString}`;
   }
 
-  updateQRCode(): void {
-    this.qrCode.update({
-      data: this.generateRandomData()
-    });
-  }
 }

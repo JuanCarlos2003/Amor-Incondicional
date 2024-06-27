@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 import { Cita } from '../../interfaces/cita';
 import { AuthService } from '../../services/auth.service';
 import { CitaService } from '../../services/cita.service';
+import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from "../footer/footer.component";
 
 
 @Component({
   selector: 'app-mostrar-citas',
   templateUrl: './mostrar-citas.component.html',
   standalone: true,
-  imports: [CalendarModule, FormsModule, ReactiveFormsModule, ButtonModule, CommonModule, CitasComponent],
+  imports: [CalendarModule, FormsModule, ReactiveFormsModule, ButtonModule, CommonModule, CitasComponent, HeaderComponent, FooterComponent],
   styleUrls: ['./mostrar-citas.component.css']
 })
 export class MostrarCitasComponent implements OnInit {

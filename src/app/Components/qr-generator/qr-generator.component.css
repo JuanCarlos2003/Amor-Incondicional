@@ -1,5 +1,3 @@
-
-
 main {
   flex: 1;
   display: flex;
@@ -21,10 +19,5 @@ main {
 @media (max-width: 600px) {
   #canvas {
     height: 300px;
-  }
-
-  button {
-    width: 100%;
-    max-width: 300px;
   }
 }
